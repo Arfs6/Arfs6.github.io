@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/tmp/browser.py.html</title>
+<meta name="Generator" content="Vim/8.1">
+<meta name="plugin-version" content="vim9.0_v1">
+<meta name="syntax" content="python">
+<meta name="settings" content="use_css,no_foldcolumn,expand_tabs,pre_wrap,prevent_copy=,use_input_for_pc=fallback">
+<meta name="colorscheme" content="none">
+<style>
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+* { font-size: 1em; }
+.PreProc { color: #5fd7ff; }
+.Identifier { color: #00ffff; font-weight: bold; }
+.Constant { color: #ff40ff; }
+.Comment { color: #00ffff; }
+.Statement { color: #ffff00; }
+-->
+</style>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Comment">#!/usr/bin/env python.exe</span>
+
+<span class="PreProc">import</span> PyQt5
+<span class="PreProc">from</span> PyQt5.QtCore <span class="PreProc">import</span> QUrl
+<span class="PreProc">from</span> PyQt5.QtWidgets <span class="PreProc">import</span> QApplication, QWidget
+<span class="PreProc">from</span> PyQt5.QtWebKitWidgets <span class="PreProc">import</span> QWebView , QWebPage
+<span class="PreProc">from</span> PyQt5.QtWebKit <span class="PreProc">import</span> QWebSettings
+<span class="PreProc">from</span> PyQt5.QtNetwork <span class="PreProc">import</span> *
+<span class="PreProc">import</span> sys
+<span class="PreProc">from</span> optparse <span class="PreProc">import</span> OptionParser
+
+<span class="Statement">class</span> <span class="Identifier">MyBrowser</span>(QWebPage):
+    <span class="Constant">'''</span><span class="Constant"> Settings for the browser.</span><span class="Constant">'''</span>
+
+    <span class="Statement">def</span> <span class="Identifier">userAgentForUrl</span>(self, url):
+        <span class="Constant">'''</span><span class="Constant"> Returns a User Agent that will be seen by the website. </span><span class="Constant">'''</span>
+        <span class="Statement">return</span> <span class="Constant">&quot;</span><span class="Constant">Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36</span><span class="Constant">&quot;</span>
+
+<span class="Statement">class</span> <span class="Identifier">Browser</span>(QWebView):
+    <span class="Statement">def</span> <span class="Identifier">__init__</span>(self):
+        <span class="Comment"># QWebView</span>
+        self.view = QWebView.__init__(self)
+        <span class="Comment">#self.view.setPage(MyBrowser())</span>
+        self.setWindowTitle(<span class="Constant">'</span><span class="Constant">Loading...</span><span class="Constant">'</span>)
+        self.titleChanged.connect(self.adjustTitle)
+        <span class="Comment">#super(Browser).connect(self.ui.webView,QtCore.SIGNAL(&quot;titleChanged (const QString&amp;amp;)&quot;), self.adjustTitle)</span>
+
+    <span class="Statement">def</span> <span class="Identifier">load</span>(self,url):
+        self.setUrl(QUrl(url))
+
+    <span class="Statement">def</span> <span class="Identifier">adjustTitle</span>(self):
+        self.setWindowTitle(self.title())
+
+    <span class="Statement">def</span> <span class="Identifier">disableJS</span>(self):
+        settings = QWebSettings.globalSettings()
+        settings.setAttribute(QWebSettings.JavascriptEnabled, <span class="Identifier">False</span>)
+
+app = QApplication(sys.argv)
+view = Browser()
+view.showMaximized()
+view.load(sys.argv[<span class="Constant">1</span>])
+<span class="Identifier">print</span>(f<span class="Constant">&quot;</span><span class="Constant">loaded [{sys.argv[1]}]</span><span class="Constant">&quot;</span>)
+app.exec_()
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
+
