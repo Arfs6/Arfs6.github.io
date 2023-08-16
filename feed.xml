@@ -1,4 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-08T08:56:20+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">NvimPager</title><link href="http://localhost:4000/blog/neovim/2023/08/05/nvimpager.html" rel="alternate" type="text/html" title="NvimPager" /><published>2023-08-05T21:44:00+01:00</published><updated>2023-08-05T21:44:00+01:00</updated><id>http://localhost:4000/blog/neovim/2023/08/05/nvimpager</id><content type="html" xml:base="http://localhost:4000/blog/neovim/2023/08/05/nvimpager.html"><![CDATA[<p>I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is that you can’t open it unless standard input (stdin) reaches End-Of-File (EOF). This happens when you’re reading from a program that might take a while before it finishes writing it’s output. I hardly even encounter that. According to the project’s README, “large files are slowing down neovim on startup”. What about it’s advantages? Well … I get to use neovim as my pager. All the cool stuffs about neovim.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-08-16T18:45:58+01:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Commands, Motions and Text Objects in vim</title><link href="https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion.html" rel="alternate" type="text/html" title="Commands, Motions and Text Objects in vim" /><published>2023-08-14T17:32:00+01:00</published><updated>2023-08-14T17:32:00+01:00</updated><id>https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion</id><content type="html" xml:base="https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion.html"><![CDATA[<p>I made an awesome discovery <a href="https://twitter.com/arf_s6/status/1690108353614131200?s=20">recently</a> on vim. It was by accident. So, here is the jist:</p>
+<h2 id="tldr">TL;DR</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">before</th>
+      <th style="text-align: left">insert</th>
+      <th style="text-align: left">after</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">"hello |world"</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ci"</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">"|"</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">| "hello world"</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ci"</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">"|"</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code class="language-plaintext highlighter-rouge">|</code> character represents your cursor position. Notice how it is placed between the <code class="language-plaintext highlighter-rouge">quotes</code> after the command.</p>
+
+<h2 id="full-jist">Full Jist</h2>
+<p>If you don’t know what <code class="language-plaintext highlighter-rouge">w</code>, <code class="language-plaintext highlighter-rouge">y</code> or <code class="language-plaintext highlighter-rouge">/</code> does in vim, I’ll suggest trying out <a href="https://linux.how2shout.com/how-to-open-vimtutor-in-neovim-and-vim-commands/">vimtutor</a>. Very hepful!<br />
+Now, let’s break down the above commad (<code class="language-plaintext highlighter-rouge">ci"</code>).</p>
+
+<h2 id="synopsys">Synopsys</h2>
+
+<p>&lt;operator-pending-command&gt;[&lt;inner/A&gt;]&lt;motion|text-object&gt;<br />
+Breakdown:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">c</code>: operator-pending-command - These are commands that requires a motion or text object to operate on. They include <code class="language-plaintext highlighter-rouge">y</code>, <code class="language-plaintext highlighter-rouge">d</code> and <code class="language-plaintext highlighter-rouge">c</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">i</code>: [optional] inner. You can use either <code class="language-plaintext highlighter-rouge">i</code> for inner or <code class="language-plaintext highlighter-rouge">a</code> to include delimiteres if any. For text objects, I think it is compulsory. It has a specific effect with motions (explained later).</li>
+  <li><code class="language-plaintext highlighter-rouge">"</code>: text-object - This is a text object. i.e. The quotes and everything within it. Other text objects include <code class="language-plaintext highlighter-rouge">(</code>, <code class="language-plaintext highlighter-rouge">{</code> and `’.</li>
+  <li><code class="language-plaintext highlighter-rouge">w</code>: motion - Any motion. e.g. <code class="language-plaintext highlighter-rouge">w</code>, <code class="language-plaintext highlighter-rouge">j</code> or <code class="language-plaintext highlighter-rouge">s</code>.</li>
+</ul>
+
+<h2 id="explanation">Explanation</h2>
+<p><code class="language-plaintext highlighter-rouge">Operator-pending</code> commands are commands that needs more information before it can execute it’s action. e.g. When you want to delete a text in vim, the command is <code class="language-plaintext highlighter-rouge">d</code>. But how will vim know what you want to delete? Tell it! You have a lot of options. You can use <code class="language-plaintext highlighter-rouge">motions</code> to delete “motionwise”. i.e. <code class="language-plaintext highlighter-rouge">dw</code> to delete word, or <code class="language-plaintext highlighter-rouge">d$</code> to delete to the end of the line. Another option is to specify a text-object.<br />
+Now, <code class="language-plaintext highlighter-rouge">text-objects</code> is a fancy word for group of text . It could be a sentence (<code class="language-plaintext highlighter-rouge">s</code>), a paragraph (<code class="language-plaintext highlighter-rouge">p</code>),  or method (<code class="language-plaintext highlighter-rouge">]m</code>). The <code class="language-plaintext highlighter-rouge">"</code> in the above example represents text withing quotes.<br />
+What about the <code class="language-plaintext highlighter-rouge">inner (i)|A (a)</code> part? Normally, when you specify a motion, it starts from the position of your cursor. But with <code class="language-plaintext highlighter-rouge">i (inner)</code> and <code class="language-plaintext highlighter-rouge">a (A)</code>, you can perform the action on the whole … motion / text-object. i.e. <code class="language-plaintext highlighter-rouge">iw</code> means inner word, excluding spaces around. It works for both text-objects and motions. Let me show you the difference.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">before</th>
+      <th style="text-align: left">insert</th>
+      <th style="text-align: left">after</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">"hello |world</code>”</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ds</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">hello |</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">hello | world</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">dis</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">|</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Without <code class="language-plaintext highlighter-rouge">i</code> or <code class="language-plaintext highlighter-rouge">a</code>, the action is executed starting from your cursor position. With <code class="language-plaintext highlighter-rouge">i</code> or <code class="language-plaintext highlighter-rouge">a</code>, context is included.</p>
+
+<h2 id="examples">Examples</h2>
+
+<p>I like examples. So, let me give you some:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ci"</code>: Change text <code class="language-plaintext highlighter-rouge">in</code>side quotes.</li>
+  <li><code class="language-plaintext highlighter-rouge">yis</code>: Yank / copy whole sentence.</li>
+  <li><code class="language-plaintext highlighter-rouge">di(</code>: Delete everything inside the parentheses.</li>
+  <li><code class="language-plaintext highlighter-rouge">diw</code>: delete the entire word.</li>
+  <li><code class="language-plaintext highlighter-rouge">=i}</code>: Format everything between braces (<code class="language-plaintext highlighter-rouge">{}</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">saa"(</code> Using sandwich plugin, wrap the things inside the quotes with parentheses.  i.e. “hello world” =&gt; <code class="language-plaintext highlighter-rouge">saa")</code> =&gt; (“hello world”).</li>
+</ul>
+
+<h3 id="over-here">Over Here</h3>
+<p>You can use <code class="language-plaintext highlighter-rouge">/</code> also. e.g. <code class="language-plaintext highlighter-rouge">d/</code>. When you timepress <code class="language-plaintext highlighter-rouge">/</code>, it will open the search area for you to type something to search. When you click enter, it will perform the action  from your current cursor position to the first result of your search. This one was unexpected for me. I knew about using <code class="language-plaintext highlighter-rouge">n</code> but not <code class="language-plaintext highlighter-rouge">/</code>. Wonders of vim 😀</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>At the end of the day, if you don’t practice / try these commands, you will forget it all. But if you keep practising, it will become second nature!<br />
+If you found the post informative, please tell me on mastodon or twitter. Links below. Also, feedback and suggestions are welcomed.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="vim" /><category term="neovim" /><category term="vim" /><summary type="html"><![CDATA[I made an awesome discovery recently on vim. It was by accident. So, here is the jist: TL;DR]]></summary></entry><entry><title type="html">NvimPager</title><link href="https://arfs6.me/blog/neovim/2023/08/05/nvimpager.html" rel="alternate" type="text/html" title="NvimPager" /><published>2023-08-05T21:44:00+01:00</published><updated>2023-08-05T21:44:00+01:00</updated><id>https://arfs6.me/blog/neovim/2023/08/05/nvimpager</id><content type="html" xml:base="https://arfs6.me/blog/neovim/2023/08/05/nvimpager.html"><![CDATA[<p>I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is that you can’t open it unless standard input (stdin) reaches End-Of-File (EOF). This happens when you’re reading from a program that might take a while before it finishes writing it’s output. I hardly even encounter that. According to the project’s README, “large files are slowing down neovim on startup”. What about it’s advantages? Well … I get to use neovim as my pager. All the cool stuffs about neovim.</p>
 <h2 id="installation">Installation</h2>
 <p>You need <code class="language-plaintext highlighter-rouge">neovim</code> version 0.9 or later, <code class="language-plaintext highlighter-rouge">bash</code> (Most probably installed) and <code class="language-plaintext highlighter-rouge">scdoc</code> for man page.</p>
 
@@ -32,7 +122,7 @@ Lastly, to use nvimpager as your default pager, you have to set the <code class=
     <h2 id="note-for-vim-users">Note for Vim Users</h2>
     <p>For vim users, you can checkout vimpager at https://github.com/rkitover/vimpager</p>
   </li>
-</ol>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="neovim" /><summary type="html"><![CDATA[I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is that you can’t open it unless standard input (stdin) reaches End-Of-File (EOF). This happens when you’re reading from a program that might take a while before it finishes writing it’s output. I hardly even encounter that. According to the project’s README, “large files are slowing down neovim on startup”. What about it’s advantages? Well … I get to use neovim as my pager. All the cool stuffs about neovim. Installation You need neovim version 0.9 or later, bash (Most probably installed) and scdoc for man page.]]></summary></entry><entry><title type="html">Pythonic Wonders: Cache, Decorate, Parameterize, Memoize, and Mock!</title><link href="http://localhost:4000/blog/python/2023/07/03/emanuel-wonders-of-python.html" rel="alternate" type="text/html" title="Pythonic Wonders: Cache, Decorate, Parameterize, Memoize, and Mock!" /><published>2023-07-03T15:57:00+01:00</published><updated>2023-07-03T15:57:00+01:00</updated><id>http://localhost:4000/blog/python/2023/07/03/emanuel-wonders-of-python</id><content type="html" xml:base="http://localhost:4000/blog/python/2023/07/03/emanuel-wonders-of-python.html"><![CDATA[<p>The following passage was written by a <a href="https://twitter.com/kpakpando1">friend</a> of mine. It is so captivating. I like it! If you also like it, please reach out to him on <a href="https://twitter.com/kpakpando1">twitter</a> and tell him!<br />
+</ol>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="neovim" /><summary type="html"><![CDATA[I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is that you can’t open it unless standard input (stdin) reaches End-Of-File (EOF). This happens when you’re reading from a program that might take a while before it finishes writing it’s output. I hardly even encounter that. According to the project’s README, “large files are slowing down neovim on startup”. What about it’s advantages? Well … I get to use neovim as my pager. All the cool stuffs about neovim. Installation You need neovim version 0.9 or later, bash (Most probably installed) and scdoc for man page.]]></summary></entry><entry><title type="html">Pythonic Wonders: Cache, Decorate, Parameterize, Memoize, and Mock!</title><link href="https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python.html" rel="alternate" type="text/html" title="Pythonic Wonders: Cache, Decorate, Parameterize, Memoize, and Mock!" /><published>2023-07-03T15:57:00+01:00</published><updated>2023-07-03T15:57:00+01:00</updated><id>https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python.html"><![CDATA[<p>The following passage was written by a <a href="https://twitter.com/kpakpando1">friend</a> of mine. It is so captivating. I like it! If you also like it, please reach out to him on <a href="https://twitter.com/kpakpando1">twitter</a> and tell him!<br />
 Enjoy!<br />
 <em>First it was cache. And then decorate. And now parameterize, memoize, and mock!!!</em><br />
 <em>Python never ceases to amaze!</em><br />
