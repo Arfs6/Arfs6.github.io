@@ -10,17 +10,17 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="I made an awesome discovery recently on vim. It was by accident. So, here is the jist: TL;DR" />
 <meta property="og:description" content="I made an awesome discovery recently on vim. It was by accident. So, here is the jist: TL;DR" />
-<link rel="canonical" href="https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion.html" />
-<meta property="og:url" content="https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion.html" />
+<link rel="canonical" href="http://localhost:4000/blog/vim/2023/08/14/vim-commands-and-motion.html" />
+<meta property="og:url" content="http://localhost:4000/blog/vim/2023/08/14/vim-commands-and-motion.html" />
 <meta property="og:site_name" content="Abdulqadir Ahmad" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-08-14T17:32:00+01:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Commands, Motions and Text Objects in vim" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Abdulqadir Ahmad"},"dateModified":"2023-08-14T17:32:00+01:00","datePublished":"2023-08-14T17:32:00+01:00","description":"I made an awesome discovery recently on vim. It was by accident. So, here is the jist: TL;DR","headline":"Commands, Motions and Text Objects in vim","mainEntityOfPage":{"@type":"WebPage","@id":"https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion.html"},"url":"https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Abdulqadir Ahmad"},"dateModified":"2023-08-14T17:32:00+01:00","datePublished":"2023-08-14T17:32:00+01:00","description":"I made an awesome discovery recently on vim. It was by accident. So, here is the jist: TL;DR","headline":"Commands, Motions and Text Objects in vim","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/vim/2023/08/14/vim-commands-and-motion.html"},"url":"http://localhost:4000/blog/vim/2023/08/14/vim-commands-and-motion.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://arfs6.me/feed.xml" title="Abdulqadir Ahmad" /></head>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Abdulqadir Ahmad" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/">Abdulqadir Ahmad</a><nav class="site-nav">
@@ -81,7 +81,7 @@ Now, let’s break down the above commad (<code class="language-plaintext highli
 
 <h2 id="synopsys">Synopsys</h2>
 
-<p>&lt;operator-pending-command&gt;[&lt;inner/A&gt;]&lt;motion|text-object&gt;<br />
+<p><strong>Normal mode</strong>: <code class="language-plaintext highlighter-rouge">\&lt;operator-pending-command\&gt;[&lt;inner/A\&gt;]&lt;motion|text-object\&gt;</code><br />
 Breakdown:</p>
 
 <ul>
@@ -92,7 +92,9 @@ Breakdown:</p>
 </ul>
 
 <h2 id="explanation">Explanation</h2>
-<p><code class="language-plaintext highlighter-rouge">Operator-pending</code> commands are commands that needs more information before it can execute it’s action. e.g. When you want to delete a text in vim, the command is <code class="language-plaintext highlighter-rouge">d</code>. But how will vim know what you want to delete? Tell it! You have a lot of options. You can use <code class="language-plaintext highlighter-rouge">motions</code> to delete “motionwise”. i.e. <code class="language-plaintext highlighter-rouge">dw</code> to delete word, or <code class="language-plaintext highlighter-rouge">d$</code> to delete to the end of the line. Another option is to specify a text-object.<br />
+
+<p>These are normal mode commands. Just type <code class="language-plaintext highlighter-rouge">&lt;ESC&gt;</code> from which ever mode you are to go back to normal mode and execute the commands.<br />
+<code class="language-plaintext highlighter-rouge">Operator-pending</code> commands are commands that needs more information before it can execute it’s action. e.g. When you want to delete a text in vim, the command is <code class="language-plaintext highlighter-rouge">d</code>. But how will vim know what you want to delete? Tell it! You have a lot of options. You can use <code class="language-plaintext highlighter-rouge">motions</code> to delete “motionwise”. i.e. <code class="language-plaintext highlighter-rouge">dw</code> to delete word, or <code class="language-plaintext highlighter-rouge">d$</code> to delete to the end of the line. Another option is to specify a text-object.<br />
 Now, <code class="language-plaintext highlighter-rouge">text-objects</code> is a fancy word for group of text . It could be a sentence (<code class="language-plaintext highlighter-rouge">s</code>), a paragraph (<code class="language-plaintext highlighter-rouge">p</code>),  or method (<code class="language-plaintext highlighter-rouge">]m</code>). The <code class="language-plaintext highlighter-rouge">"</code> in the above example represents text withing quotes.<br />
 What about the <code class="language-plaintext highlighter-rouge">inner (i)|A (a)</code> part? Normally, when you specify a motion, it starts from the position of your cursor. But with <code class="language-plaintext highlighter-rouge">i (inner)</code> and <code class="language-plaintext highlighter-rouge">a (A)</code>, you can perform the action on the whole … motion / text-object. i.e. <code class="language-plaintext highlighter-rouge">iw</code> means inner word, excluding spaces around. It works for both text-objects and motions. Let me show you the difference.</p>
 
