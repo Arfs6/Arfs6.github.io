@@ -1,0 +1,40 @@
+name: Build and Deploy arfs6.me
+
+on:
+  push:
+    branches:
+      - raw
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          ref: raw  # Checkout the 'raw' branch
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 3.*
+
+      - name: Install Jekyll and Bundler
+        run: |
+          gem install bundler
+          bundle install
+          bundle exec jekyll build
+
+      - name: Copy Site to Main Branch
+        run: |
+          mkdir -p _main
+          cp -r _site/* _main/
+          git checkout main
+          cp -r _main/* .
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m "Update Jekyll site"
+          git push
+
