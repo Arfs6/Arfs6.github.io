@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout raw branch
         uses: actions/checkout@v4
         with:
           ref: raw  # Checkout the 'raw' branch
@@ -26,15 +26,21 @@ jobs:
           bundle install
           bundle exec jekyll build
 
-      - name: Copy Site to Main Branch
+      - name: Keep _site directory
         run: |
-          mkdir -p _main
-          cp -r _site/* _main/
-          git checkout main
-          cp -r _main/* .
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git add .
-          git commit -m "Update Jekyll site"
-          git push
+          mkdir -p ../_main
+          cp -r _site/* ../_main/
 
+      - name: Get main branch
+        uses: action/checkout@v4
+        with:
+          ref: main
+
+      - name: Deploy site
+        run: |
+          cp ../_main/* .
+          git config user.name "${{ github.actor }}"
+          git config user.email "arfs6.mail@gmail.com"
+          git add .
+          git commit -m "Update Jekyll site by github workflow"
+          git push
