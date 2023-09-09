@@ -1,4 +1,164 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-08-26T11:19:50+01:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Commands, Motions and Text Objects in vim</title><link href="https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion.html" rel="alternate" type="text/html" title="Commands, Motions and Text Objects in vim" /><published>2023-08-14T17:32:00+01:00</published><updated>2023-08-14T17:32:00+01:00</updated><id>https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion</id><content type="html" xml:base="https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion.html"><![CDATA[<p>I made an awesome discovery <a href="https://twitter.com/arf_s6/status/1690108353614131200?s=20">recently</a> on vim. It was by accident. So, here is the jist:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-09-09T18:54:40+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Sqlalchemy hidden bug</title><link href="https://arfs6.me/blog/python/2023/08/30/python-sqlalchemy-bug.html" rel="alternate" type="text/html" title="Sqlalchemy hidden bug" /><published>2023-08-30T10:01:00+00:00</published><updated>2023-08-30T10:01:00+00:00</updated><id>https://arfs6.me/blog/python/2023/08/30/python-sqlalchemy-bug</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/08/30/python-sqlalchemy-bug.html"><![CDATA[<p>I was working with <a href="https://www.sqlalchemy.org/">sqlalchemy</a>. A python orm package. I had a couple of models with relationships. Mostly one - many relationships. Everything was going alright until I met this stubborn bug. It took me hours to figure it out.</p>
+
+<h2 id="replicating-bug">Replicating bug</h2>
+
+<p>Let’s replicate the bug here.</p>
+
+<h3 id="setting-up">Setting up</h3>
+
+<ol>
+  <li>creat a directory in <code class="language-plaintext highlighter-rouge">/tmp</code> called <code class="language-plaintext highlighter-rouge">codespace</code>.</li>
+  <li>create another directory in <code class="language-plaintext highlighter-rouge">codespace</code> called <code class="language-plaintext highlighter-rouge">models</code>. This will contain all our models.</li>
+  <li>
+    <p>Create a file in models called <code class="language-plaintext highlighter-rouge">__init__.py</code> with the following content:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">#!/usr/bin/env python
+</span> <span class="sh">"""</span><span class="s">Initialize the models package.</span><span class="sh">"""</span>
+
+ <span class="kn">from</span> <span class="n">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+
+
+ <span class="n">Base</span> <span class="o">=</span> <span class="nf">declarative_base</span><span class="p">()</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>create a file in <code class="language-plaintext highlighter-rouge">models</code> called <code class="language-plaintext highlighter-rouge">authors</code> with the content:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">#!/usr/bin/env python
+</span> <span class="sh">"""</span><span class="s">Contains the Author model.</span><span class="sh">"""</span>
+ <span class="kn">from</span> <span class="n">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span>
+ <span class="kn">from</span> <span class="n">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">relationship</span>
+
+ <span class="kn">from</span> <span class="n">.</span> <span class="kn">import</span> <span class="n">Base</span>
+
+
+ <span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+     <span class="sh">"""</span><span class="s">Represents an author in the authors table</span><span class="sh">"""</span>
+     <span class="n">__tablename__</span> <span class="o">=</span> <span class="sh">'</span><span class="s">authors</span><span class="sh">'</span>
+     <span class="nb">id</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">autoincrement</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+     <span class="n">firstName</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="nc">String</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+     <span class="n">lastName</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="nc">String</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+     <span class="c1"># relationships
+</span>     <span class="n">books</span> <span class="o">=</span> <span class="nf">relationship</span><span class="p">(</span><span class="sh">'</span><span class="s">Book</span><span class="sh">'</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="sh">'</span><span class="s">author</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>create a file in <code class="language-plaintext highlighter-rouge">models</code> called <code class="language-plaintext highlighter-rouge">books.py</code> with the following content:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">#!/usr/bin/env python
+</span> <span class="sh">"""</span><span class="s">Contains the Book model.</span><span class="sh">"""</span>
+
+ <span class="kn">from</span> <span class="n">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span>
+ <span class="kn">from</span> <span class="n">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">relationship</span>
+
+ <span class="kn">from</span> <span class="n">.</span> <span class="kn">import</span> <span class="n">Base</span>
+
+
+ <span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+     <span class="sh">"""</span><span class="s">Represents a book in the books table.</span><span class="sh">"""</span>
+     <span class="n">__tablename__</span> <span class="o">=</span> <span class="sh">'</span><span class="s">books</span><span class="sh">'</span>
+     <span class="nb">id</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">autoincrement</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+     <span class="n">name</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="nc">String</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+     <span class="n">authorId</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="nc">ForeignKey</span><span class="p">(</span><span class="sh">'</span><span class="s">authors.id</span><span class="sh">'</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+     <span class="c1"># relationships
+</span>     <span class="n">author</span> <span class="o">=</span> <span class="nf">relationship</span><span class="p">(</span><span class="sh">'</span><span class="s">Author</span><span class="sh">'</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="sh">'</span><span class="s">books</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Last file, create the main file <code class="language-plaintext highlighter-rouge">bookStore.py</code> in the current directory with the following content:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">#!/usr/bin/env python
+</span> <span class="sh">"""</span><span class="s">Database for a book store</span><span class="sh">"""</span>
+
+ <span class="kn">from</span> <span class="n">os</span> <span class="kn">import</span> <span class="n">getenv</span>
+ <span class="kn">from</span> <span class="n">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+ <span class="kn">from</span> <span class="n">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
+
+ <span class="kn">from</span> <span class="n">models</span> <span class="kn">import</span> <span class="n">Base</span>
+ <span class="kn">from</span> <span class="n">models</span> <span class="kn">import</span> <span class="n">authors</span><span class="p">,</span> <span class="n">books</span>
+
+
+
+ <span class="k">def</span> <span class="nf">getSession</span><span class="p">():</span>
+     <span class="sh">"""</span><span class="s">Initialize the database and return a session object</span><span class="sh">"""</span>
+     <span class="c1"># mysql user and password should be stored in environment variable BOOKSTORE_MYSQL_USER and BOOKSTORE_MYSQL_PWD respectively
+</span>     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">mysql+mysqldb://</span><span class="si">{</span><span class="nf">getenv</span><span class="p">(</span><span class="sh">'</span><span class="s">BOOKSTORE_MYSQL_USER</span><span class="sh">'</span><span class="p">)</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="nf">getenv</span><span class="p">(</span><span class="sh">'</span><span class="s">BOOKSTORE_MYSQL_PWD</span><span class="sh">'</span><span class="p">)</span><span class="si">}</span><span class="s">@localhost/bookstore</span><span class="sh">"</span>
+     <span class="n">engine</span> <span class="o">=</span> <span class="nf">create_engine</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">pool_pre_ping</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+     <span class="n">Base</span><span class="p">.</span><span class="n">metadata</span><span class="p">.</span><span class="nf">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+     <span class="n">Session</span> <span class="o">=</span> <span class="nf">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">expire_on_commit</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+     <span class="n">session</span> <span class="o">=</span> <span class="nc">Session</span><span class="p">()</span>
+     <span class="k">return</span> <span class="n">session</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>create the database for our book store in mysql:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 3:09 PM⌚arfs6 <span class="k">in </span>codespace
+ <span class="nv">$ </span>mysql <span class="nt">-u</span> arfs6 <span class="nt">-p</span>
+ Enter password: 
+ Welcome to the MySQL monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span><span class="nb">.</span>
+ Your MySQL connection <span class="nb">id </span>is 13
+ Server version: 8.0.33-0ubuntu0.20.04.2 <span class="o">(</span>Ubuntu<span class="o">)</span>
+
+ Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2023, Oracle and/or its affiliates.
+
+ Oracle is a registered trademark of Oracle Corporation and/or its
+ affiliates. Other names may be trademarks of their respective
+ owners.
+
+ Type <span class="s1">'help;'</span> or <span class="s1">'\h'</span> <span class="k">for </span>help. Type <span class="s1">'\c'</span> to clear the current input statement.
+
+ mysql&gt; CREATE DATABASE IF NOT EXISTS bookstore<span class="p">;</span>
+ Query OK, 1 row affected <span class="o">(</span>0.71 sec<span class="o">)</span>
+
+ mysql&gt; 
+</code></pre></div>    </div>
+
+    <ol>
+      <li>Set the <code class="language-plaintext highlighter-rouge">BOOKSTORE_MYSQL_USER</code>, and <code class="language-plaintext highlighter-rouge">BOOKSTORE_MYSQL_PWD</code> to your mysql username and password respectively. This will be used by <code class="language-plaintext highlighter-rouge">bookStore.py</code> to create the database engine.</li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="testing">Testing</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span><span class="p">:</span><span class="mi">35</span> <span class="n">PM</span><span class="err">⌚</span><span class="n">arfs6</span> <span class="ow">in</span> <span class="n">codespace</span>
+<span class="err">$</span> <span class="n">python</span> <span class="o">-</span><span class="n">i</span> <span class="n">bookStore</span><span class="p">.</span><span class="n">py</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="n">models.authors</span> <span class="kn">import</span> <span class="n">Author</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nf">getSession</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="nc">Author</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">.</span><span class="n">firstName</span> <span class="o">=</span> <span class="sh">'</span><span class="s">Abdulqadir</span><span class="sh">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">.</span><span class="n">lastName</span> <span class="o">=</span> <span class="sh">'</span><span class="s">Ahmad</span><span class="sh">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">.</span><span class="nb">id</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">.</span><span class="nb">id</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span>     
+</code></pre></div></div>
+
+<p>The Author class seems to be working, let’s test the Book class.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="n">models.books</span> <span class="kn">import</span> <span class="n">Book</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="nc">Book</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="sh">'</span><span class="s">The wierd sqlalchemy bug</span><span class="sh">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">authorId</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="nb">id</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">.</span><span class="nf">commit</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="p">.</span><span class="nb">id</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">storedB</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="n">Book</span><span class="p">).</span><span class="nf">all</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">storedB</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">storedB</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nb">id</span> <span class="o">==</span> <span class="n">b</span><span class="p">.</span><span class="nb">id</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">storedA</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">query</span><span class="p">(</span><span class="n">Author</span><span class="p">).</span><span class="nf">all</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">storedA</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">storedA</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nb">id</span> <span class="o">==</span> <span class="n">storedB</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">authorId</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> 
+</code></pre></div></div>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><category term="python," /><category term="orm," /><category term="sqlalchemy," /><category term="sql" /><summary type="html"><![CDATA[Wierd bug]]></summary></entry><entry><title type="html">Commands, Motions and Text Objects in vim</title><link href="https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion.html" rel="alternate" type="text/html" title="Commands, Motions and Text Objects in vim" /><published>2023-08-14T16:32:00+00:00</published><updated>2023-08-14T16:32:00+00:00</updated><id>https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion</id><content type="html" xml:base="https://arfs6.me/blog/vim/2023/08/14/vim-commands-and-motion.html"><![CDATA[<p>I made an awesome discovery <a href="https://twitter.com/arf_s6/status/1690108353614131200?s=20">recently</a> on vim. It was by accident. So, here is the jist:</p>
 <h2 id="tldr">TL;DR</h2>
 
 <table>
@@ -100,7 +260,7 @@ What about the <code class="language-plaintext highlighter-rouge">inner (i)|A (a
 <h2 id="conclusion">Conclusion</h2>
 
 <p>At the end of the day, if you don’t practice / try these commands, you will forget it all. But if you keep practising, it will become second nature!<br />
-If you found the post informative, please tell me on mastodon or twitter. Links below. Also, feedback and suggestions are welcomed.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="vim" /><category term="neovim" /><category term="vim" /><summary type="html"><![CDATA[I made an awesome discovery recently on vim. It was by accident. So, here is the jist]]></summary></entry><entry><title type="html">NvimPager</title><link href="https://arfs6.me/blog/neovim/2023/08/05/nvimpager.html" rel="alternate" type="text/html" title="NvimPager" /><published>2023-08-05T21:44:00+01:00</published><updated>2023-08-05T21:44:00+01:00</updated><id>https://arfs6.me/blog/neovim/2023/08/05/nvimpager</id><content type="html" xml:base="https://arfs6.me/blog/neovim/2023/08/05/nvimpager.html"><![CDATA[<p>I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is that you can’t open it unless standard input (stdin) reaches End-Of-File (EOF). This happens when you’re reading from a program that might take a while before it finishes writing it’s output. I hardly even encounter that. According to the project’s README, “large files are slowing down neovim on startup”. What about it’s advantages? Well … I get to use neovim as my pager. All the cool stuffs about neovim.</p>
+If you found the post informative, please tell me on mastodon or twitter. Links below. Also, feedback and suggestions are welcomed.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="vim" /><category term="neovim" /><category term="vim" /><summary type="html"><![CDATA[I made an awesome discovery recently on vim. It was by accident. So, here is the jist]]></summary></entry><entry><title type="html">NvimPager</title><link href="https://arfs6.me/blog/neovim/2023/08/05/nvimpager.html" rel="alternate" type="text/html" title="NvimPager" /><published>2023-08-05T20:44:00+00:00</published><updated>2023-08-05T20:44:00+00:00</updated><id>https://arfs6.me/blog/neovim/2023/08/05/nvimpager</id><content type="html" xml:base="https://arfs6.me/blog/neovim/2023/08/05/nvimpager.html"><![CDATA[<p>I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is that you can’t open it unless standard input (stdin) reaches End-Of-File (EOF). This happens when you’re reading from a program that might take a while before it finishes writing it’s output. I hardly even encounter that. According to the project’s README, “large files are slowing down neovim on startup”. What about it’s advantages? Well … I get to use neovim as my pager. All the cool stuffs about neovim.</p>
 <h2 id="installation">Installation</h2>
 <p>You need <code class="language-plaintext highlighter-rouge">neovim</code> version 0.9 or later, <code class="language-plaintext highlighter-rouge">bash</code> (Most probably installed) and <code class="language-plaintext highlighter-rouge">scdoc</code> for man page.</p>
 
@@ -134,7 +294,7 @@ Lastly, to use nvimpager as your default pager, you have to set the <code class=
     <h2 id="note-for-vim-users">Note for Vim Users</h2>
     <p>For vim users, you can checkout vimpager at https://github.com/rkitover/vimpager</p>
   </li>
-</ol>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="neovim" /><summary type="html"><![CDATA[I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is]]></summary></entry><entry><title type="html">Pythonic Wonders: Cache, Decorate, Parameterize, Memoize, and Mock!</title><link href="https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python.html" rel="alternate" type="text/html" title="Pythonic Wonders: Cache, Decorate, Parameterize, Memoize, and Mock!" /><published>2023-07-03T15:57:00+01:00</published><updated>2023-07-03T15:57:00+01:00</updated><id>https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python.html"><![CDATA[<p>The following passage was written by a <a href="https://twitter.com/kpakpando1">friend</a> of mine. It is so captivating. I like it! If you also like it, please reach out to him on <a href="https://twitter.com/kpakpando1">twitter</a> and tell him!<br />
+</ol>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="neovim" /><summary type="html"><![CDATA[I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is]]></summary></entry><entry><title type="html">Pythonic Wonders: Cache, Decorate, Parameterize, Memoize, and Mock!</title><link href="https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python.html" rel="alternate" type="text/html" title="Pythonic Wonders: Cache, Decorate, Parameterize, Memoize, and Mock!" /><published>2023-07-03T14:57:00+00:00</published><updated>2023-07-03T14:57:00+00:00</updated><id>https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python.html"><![CDATA[<p>The following passage was written by a <a href="https://twitter.com/kpakpando1">friend</a> of mine. It is so captivating. I like it! If you also like it, please reach out to him on <a href="https://twitter.com/kpakpando1">twitter</a> and tell him!<br />
 Enjoy!<br />
 <em>First it was cache. And then decorate. And now parameterize, memoize, and mock!!!</em><br />
 <em>Python never ceases to amaze!</em><br />
