@@ -32,7 +32,7 @@ jobs:
           cp -r _site/* ../_main/
 
       - name: Get main branch
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
         with:
           ref: main
 
