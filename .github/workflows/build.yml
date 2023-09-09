@@ -38,7 +38,7 @@ jobs:
 
       - name: Deploy site
         run: |
-          cp ../_main/* .
+          cp -r ../_main/* .
           git config user.name "${{ github.actor }}"
           git config user.email "arfs6.mail@gmail.com"
           git add .
