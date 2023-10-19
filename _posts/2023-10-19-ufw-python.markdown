@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Did you know? ufw is a python script.
-date: 2023:10:19 20:33:00 +0100
+date: 2023/10/19 20:33:00 +0100
 excerpt: I wonder which tool I am using that also runs on python.
 category: python
 tags: python, ufw
