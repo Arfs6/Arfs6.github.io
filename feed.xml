@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-10-19T21:21:42+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Did you know? ufw is a python script.</title><link href="https://arfs6.me/blog/python/2023/10/19/ufw-python.html" rel="alternate" type="text/html" title="Did you know? ufw is a python script." /><published>2023-10-19T19:33:00+00:00</published><updated>2023-10-19T19:33:00+00:00</updated><id>https://arfs6.me/blog/python/2023/10/19/ufw-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/10/19/ufw-python.html"><![CDATA[<p>Out of curiosity, I wanted to know what ufw (uncomplicated Firewall) was made up of. So, I looked for it:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-10-19T21:25:27+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Did you know? ufw is a python script.</title><link href="https://arfs6.me/blog/python/2023/10/19/ufw-python.html" rel="alternate" type="text/html" title="Did you know? ufw is a python script." /><published>2023-10-19T19:33:00+00:00</published><updated>2023-10-19T19:33:00+00:00</updated><id>https://arfs6.me/blog/python/2023/10/19/ufw-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/10/19/ufw-python.html"><![CDATA[<p>Out of curiosity, I wanted to know what ufw (uncomplicated Firewall) was made up of. So, I looked for it:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>which ufw
 /usr/sbin/ufw
@@ -33,9 +33,9 @@ import ufw.frontend
 from ufw.common import UFWError
 from ufw.util import error, warn, msg, _findpath, create_lock, release_lock
 import gettext
-abuahmad <span class="k">in </span>sbin  3:41 PM on Thursday 
-<span class="nv">$ </span>
 </code></pre></div></div>
+
+<p>The first command <code class="language-plaintext highlighter-rouge">head</code> prints the first ten lines of the file, while the second command <code class="language-plaintext highlighter-rouge">grep</code> prints all the lines that contain <code class="language-plaintext highlighter-rouge">import</code> in it.</p>
 
 <p>So, it turns out, ufw is “just” a python script bundled with a package that lives somewhere in <code class="language-plaintext highlighter-rouge">sys.path</code>.</p>
 
