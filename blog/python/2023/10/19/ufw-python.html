@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Did you know? ufw is a python script. | Abdulqadir Ahmad</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Did you know? ufw is a python script." />
+<meta name="author" content="Abdulqadir Ahmad" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I wonder which tool I am using that also runs on python." />
+<meta property="og:description" content="I wonder which tool I am using that also runs on python." />
+<link rel="canonical" href="https://arfs6.me/blog/python/2023/10/19/ufw-python.html" />
+<meta property="og:url" content="https://arfs6.me/blog/python/2023/10/19/ufw-python.html" />
+<meta property="og:site_name" content="Abdulqadir Ahmad" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-10-19T19:33:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Did you know? ufw is a python script." />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Abdulqadir Ahmad"},"dateModified":"2023-10-19T19:33:00+00:00","datePublished":"2023-10-19T19:33:00+00:00","description":"I wonder which tool I am using that also runs on python.","headline":"Did you know? ufw is a python script.","mainEntityOfPage":{"@type":"WebPage","@id":"https://arfs6.me/blog/python/2023/10/19/ufw-python.html"},"url":"https://arfs6.me/blog/python/2023/10/19/ufw-python.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://arfs6.me/feed.xml" title="Abdulqadir Ahmad" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Abdulqadir Ahmad</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/blog/">Blog</a><a class="page-link" href="/projects/">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Did you know? ufw is a python script.</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-10-19T19:33:00+00:00" itemprop="datePublished">Oct 19, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Out of curiosity, I wanted to know what ufw (uncomplicated Firewall) was made up of. So, I looked for it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>which ufw
+/usr/sbin/ufw
+</code></pre></div></div>
+
+<p>Yours might be somewhere else. I then paid the directory a visit and checked what the file was made up of:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /usr/sbin
+<span class="nv">$ </span>file ufw
+ufw: Python script, ASCII text executable
+</code></pre></div></div>
+
+<p>I then opened it with vim, but since I can open it here, let me show you some part of it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">head </span>ufw
+<span class="c">#! /usr/bin/python3</span>
+<span class="c">#</span>
+<span class="c"># ufw: front-end for Linux firewalling (cli)</span>
+<span class="c">#</span>
+<span class="c"># Copyright 2008-2021 Canonical Ltd.</span>
+<span class="c">#</span>
+<span class="c">#    This program is free software: you can redistribute it and/or modify</span>
+<span class="c">#    it under the terms of the GNU General Public License version 3,</span>
+<span class="c">#    as published by the Free Software Foundation.</span>
+<span class="c">#</span>
+<span class="nv">$ </span><span class="nb">grep</span> <span class="s1">'import'</span> ufw
+from __future__ import print_function
+import os
+import sys
+import warnings
+import ufw.frontend
+from ufw.common import UFWError
+from ufw.util import error, warn, msg, _findpath, create_lock, release_lock
+import gettext
+abuahmad <span class="k">in </span>sbin  3:41 PM on Thursday 
+<span class="nv">$ </span>
+</code></pre></div></div>
+
+<p>So, it turns out, ufw is “just” a python script bundled with a package that lives somewhere in <code class="language-plaintext highlighter-rouge">sys.path</code>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>So, I wonder, which other tools I use regularly are also python scripts?</p>
+
+  </div><a class="u-url" href="/blog/python/2023/10/19/ufw-python.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Abdulqadir Ahmad</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Abdulqadir Ahmad</li><li><a class="u-email" href="mailto:arfs6.mail@gmail.com">arfs6.mail@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/arfs6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">arfs6</span></a></li><li><a href="https://hachyderm.io/@arfs6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">arfs6</span></a></li><li><a href="https://www.twitter.com/arf_s6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">arf_s6</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Abdulqadir Ahmad&#39;s website. Where you can read his blogs, and get to know his projects.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
