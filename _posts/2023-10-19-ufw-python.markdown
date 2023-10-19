@@ -44,9 +44,9 @@ import ufw.frontend
 from ufw.common import UFWError
 from ufw.util import error, warn, msg, _findpath, create_lock, release_lock
 import gettext
-abuahmad in sbin  3:41 PM on Thursday 
-$ 
 ```
+
+The first command `head` prints the first ten lines of the file, while the second command `grep` prints all the lines that contain `import` in it.  
 
 So, it turns out, ufw is "just" a python script bundled with a package that lives somewhere in `sys.path`.  
 
