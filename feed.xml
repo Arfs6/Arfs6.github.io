@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-10-21T21:26:25+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Joining two absolute paths in python</title><link href="https://arfs6.me/blog/python/2023/10/21/python-os-path-join.html" rel="alternate" type="text/html" title="Joining two absolute paths in python" /><published>2023-10-21T18:55:00+00:00</published><updated>2023-10-21T18:55:00+00:00</updated><id>https://arfs6.me/blog/python/2023/10/21/python-os-path-join</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/10/21/python-os-path-join.html"><![CDATA[<p>Let’s join two absolute paths using the <code class="language-plaintext highlighter-rouge">os</code> module of python:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-10-26T21:20:58+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Are you blind?</title><link href="https://arfs6.me/blog/blind/2023/10/26/are-you-blind.html" rel="alternate" type="text/html" title="Are you blind?" /><published>2023-10-26T20:55:00+00:00</published><updated>2023-10-26T20:55:00+00:00</updated><id>https://arfs6.me/blog/blind/2023/10/26/are-you-blind</id><content type="html" xml:base="https://arfs6.me/blog/blind/2023/10/26/are-you-blind.html"><![CDATA[<p>I get asked this question often, The two times that stick out are:</p>
+
+<ul>
+  <li>This one was when i was in secondary school (or high school).  I and my friends were going somewhere on foot, and they stopped to buy something. As usuall, my white cane was with one of them. Seeing that I know the road and I am already on a pavement (walkway), I decided to continue walking without a guide. A couple of steps later, I bumped into  someone. His first reaction was:
+    <blockquote>
+      <p>Are you blind?</p>
+    </blockquote>
+
+    <p>I was like:</p>
+
+    <blockquote>
+      <p>Yes.</p>
+    </blockquote>
+
+    <p>After some convincing by my friends, he realised I was truly blind and the table turned on him.</p>
+  </li>
+  <li>This next one was very recent. I was in a hall with a couple of people, and someway, somehow my phone fell. And then boom someone goes <em>“Are you blind?”</em>. I just ignored the question and continued using my phone. Later the person came to realise, I was truly blind.</li>
+</ul>
+
+<h2 id="lesson">Lesson</h2>
+
+<p>Try as much as possible not to ask such questions, especially to someone you don’t know. Blind people exist, and who knows, maybe the person is blind. It doesn’t border me that much, but I’m sure it is going to border some of the people that asked me.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="blind" /><summary type="html"><![CDATA[I get asked this question often. The two times that stick out are]]></summary></entry><entry><title type="html">Joining two absolute paths in python</title><link href="https://arfs6.me/blog/python/2023/10/21/python-os-path-join.html" rel="alternate" type="text/html" title="Joining two absolute paths in python" /><published>2023-10-21T18:55:00+00:00</published><updated>2023-10-21T18:55:00+00:00</updated><id>https://arfs6.me/blog/python/2023/10/21/python-os-path-join</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/10/21/python-os-path-join.html"><![CDATA[<p>Let’s join two absolute paths using the <code class="language-plaintext highlighter-rouge">os</code> module of python:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="n">os</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="sh">'</span><span class="s">/home/arfs6</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">/proj</span><span class="sh">'</span><span class="p">)</span>  <span class="c1"># Expecting /home/arfs6/proj
@@ -273,14 +294,4 @@ Lastly, to use nvimpager as your default pager, you have to set the <code class=
     <h2 id="note-for-vim-users">Note for Vim Users</h2>
     <p>For vim users, you can checkout vimpager at https://github.com/rkitover/vimpager</p>
   </li>
-</ol>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="neovim" /><summary type="html"><![CDATA[I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is]]></summary></entry><entry><title type="html">Pythonic Wonders: Cache, Decorate, Parameterize, Memoize, and Mock!</title><link href="https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python.html" rel="alternate" type="text/html" title="Pythonic Wonders: Cache, Decorate, Parameterize, Memoize, and Mock!" /><published>2023-07-03T14:57:00+00:00</published><updated>2023-07-03T14:57:00+00:00</updated><id>https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/07/03/emanuel-wonders-of-python.html"><![CDATA[<p>The following passage was written by a <a href="https://twitter.com/kpakpando1">friend</a> of mine. It is so captivating. I like it! If you also like it, please reach out to him on <a href="https://twitter.com/kpakpando1">twitter</a> and tell him!<br />
-Enjoy!<br />
-<em>First it was cache. And then decorate. And now parameterize, memoize, and mock!!!</em><br />
-<em>Python never ceases to amaze!</em><br />
-<em>So what, if any, do these have in common, besides being wrapped together in a module? A lot!</em><br />
-<em>Memoization is a use case for caching, i.e., memoization is caching when the cached thing is the result of a function call; in that case, the function being cached has to be designed to maintain the cache. And if the function is not natively able to memoize, it’s easy - you decorate it! Remember, decoration is that magic that makes a function appear to do more than what it is born to do, without it having to be born again.😀 Just memoize it! By decorating it!</em><br />
-<em>And after that, you can even mock it. Yes, that’s right - pretend to be the function when you are a pure fake! And it’s easy to do that too - just import Mock from unittest.mock and create a mock object and make it fake to return anything you wish! Or, if you are enjoying the pun, try MagicMock. Same stuff, with more Python magic sprinkled on it.😀</em><br />
-<em>And oh, I almost forgot: while you’re at it, there is more fun - you can make multiple tests more cool - just parameterize it. That is, use one test with parameters to do several others at once, like killing several birds with one stone.</em><br />
-<em>See? It’s easy when you think about it!</em><br />
-<em>No cache😀</em><br />
-<em>🤩Do.Pythonic.Things</em></p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><summary type="html"><![CDATA[First it was cache. And then decorate. And now parameterize, memoize, and mock!!! Python never ceases to amaze!]]></summary></entry></feed>
+</ol>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="neovim" /><summary type="html"><![CDATA[I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is]]></summary></entry></feed>
