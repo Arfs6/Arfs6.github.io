@@ -1,7 +1,7 @@
 ---
 layout: post
 title: My math workstation
-categories: latex, vim, nvda
+categories: latex vim nvda
 tags: latex, nvda, mathml, mathjax, neovim, vim
 excerpt: My LaTeX setup
 date: 2023-11-05 13:27 +0100
