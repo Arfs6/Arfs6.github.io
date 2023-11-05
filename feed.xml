@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-10-26T21:20:58+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Are you blind?</title><link href="https://arfs6.me/blog/blind/2023/10/26/are-you-blind.html" rel="alternate" type="text/html" title="Are you blind?" /><published>2023-10-26T20:55:00+00:00</published><updated>2023-10-26T20:55:00+00:00</updated><id>https://arfs6.me/blog/blind/2023/10/26/are-you-blind</id><content type="html" xml:base="https://arfs6.me/blog/blind/2023/10/26/are-you-blind.html"><![CDATA[<p>I get asked this question often, The two times that stick out are:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-05T14:24:17+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">My math workstation</title><link href="https://arfs6.me/blog/latex,/vim,/nvda/2023/11/05/my-math-workstation.html" rel="alternate" type="text/html" title="My math workstation" /><published>2023-11-05T12:27:00+00:00</published><updated>2023-11-05T12:27:00+00:00</updated><id>https://arfs6.me/blog/latex,/vim,/nvda/2023/11/05/my-math-workstation</id><content type="html" xml:base="https://arfs6.me/blog/latex,/vim,/nvda/2023/11/05/my-math-workstation.html"><![CDATA[<p>As a computer science student, I take courses with calculations in it. I am in the process of building my “workstation” or “schoolstation” for learning and writing such courses. This post is for me to share how my work station is, It might be useful for other people who are also trying to figure out what tools to use.</p>
+
+<p>I’ll be dividing this post into three:</p>
+
+<ol>
+  <li><a href="#writing">Writing</a></li>
+  <li><a href="#transpiling">Transpiling</a></li>
+  <li><a href="#reading">Reading</a></li>
+</ol>
+
+<h2 id="writing">Writing</h2>
+
+<p>This step involves writing the LaTeX document. I started using <a href="https://github.com/tsengwoody/Access8Math">access8math</a> for writing the TeX document. With time, I gradually moved to <a href="https://neovim.io">neovim</a> for the writing part, and I am now fully using it to write my LaTeX “code”.  Neovim had a lot more to offer.</p>
+
+<p>I use neovim in <a href="https://learn.microsoft.com/en-us/windows/wsl/about">wsl</a>, but it works in windows as well. I just tend to spend more time in wsl. If you’re interested in neovim and want to try it out, here is it’s installation guide: <a href="https://github.com/neovim/neovim/wiki/Installing-Neovim">https://github.com/neovim/neovim/wiki/Installing-Neovim</a>. I don’t know which tutorial to suggest, I used the builtin vim tutor.</p>
+
+<p>Here are the plugins and features of neovim I use:</p>
+
+<ul>
+  <li><strong><a href="https://vim.fandom.com/wiki/Using_marks">Marks</a></strong>: This lets me to mark a section in the file I am editing. It allows me to jump from one part of the document to another. E.g. From the question to the solution.</li>
+  <li>Jump to next or previous method. This is a command in vim that jumps to next or previous methods. In LaTeX document, it will jump to next or previous environment. E.g. <code class="language-plaintext highlighter-rouge">\begin{equation}</code> environment. This is very useful when navigating the file. <code class="language-plaintext highlighter-rouge">[m</code> jumps to previous environment and <code class="language-plaintext highlighter-rouge">]m</code> jumps to next environment.</li>
+  <li><strong><a href="https://github.com/lervag/vimtex">vimtex</a></strong>: This is a plugin that adds better support for LaTeX in vim. It has a lot of features. E.g. You can use <code class="language-plaintext highlighter-rouge">%</code> to jump between the start and end of an environment.</li>
+  <li>A custom script that transpiles (compiles) my LaTeX document to HTML when I save the file. The script is very simple, it just calls <code class="language-plaintext highlighter-rouge">pandoc</code> and passes the appropriate arguments for the conversion. I would write a different blog post on how to do that.</li>
+</ul>
+
+<p>This aren’t all the features I use, I’ll add more with time.</p>
+
+<h2 id="transpiling">Transpiling</h2>
+
+<p>The two formats I usually transpile LaTeX to are pdf and HTML. As for the pdf, I use pdflatex, which comes with most LaTeX distributions.You can get a LaTeX distribution here: <a href="https://www.latex-project.org/get/">https://www.latex-project.org/get/</a>. As for the HTML conversion, I use pandoc. Pandoc is a document converter. You can install one by visiting this page and following the instruction as per your operating system: <a href="https://pandoc.org/installing.html">https://pandoc.org/installing.html</a></p>
+
+<p>Both pandoc and pdflatex are command line tools. Here are the commands I use to transpile to HTML:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandoc <span class="nt">-f</span> latex <span class="nt">-t</span> html <span class="nt">--mathml</span> <span class="nt">-o</span> file.html file.tex
+</code></pre></div></div>
+
+<p>Where <code class="language-plaintext highlighter-rouge">file.tex</code> is the LaTeX file and <code class="language-plaintext highlighter-rouge">file.html</code> is the file to store the HTML output in. The <code class="language-plaintext highlighter-rouge">--mathml</code> tells pandoc to convert it to mathml, you can use <code class="language-plaintext highlighter-rouge">--mathjax</code> to convert it to mathjax.</p>
+
+<p>Here is the command I use to convert to pdf:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pdflatex file.tex
+</code></pre></div></div>
+
+<p>Where <code class="language-plaintext highlighter-rouge">file.tex</code> is the LaTeX file. On successful compilation, <code class="language-plaintext highlighter-rouge">pdflatex</code> stores the pdf output in <code class="language-plaintext highlighter-rouge">file.pdf</code>. It changes the extension of the input file from <code class="language-plaintext highlighter-rouge">.tex</code> to <code class="language-plaintext highlighter-rouge">.pdf</code>. I haven’t figured out what to do when there is an error in my LaTeX, I just abort the process by pressing ctrl+d and going back to neovim to figure it out.</p>
+
+<h2 id="reading">Reading</h2>
+
+<p>This section might not be useful to sighted people. As a blind person, I have to figure out how to read the math I wrote. While writing, I read the LaTeX text directly. After I am done writing, I usually want to cross check what I wrote. For this step, I convert the LaTeX document to HTML, then open it in my browser (Microsoft edge for now).</p>
+
+<p>I am an <a href="https://www.nvaccess.org/">NVDA</a> user. For me to be able to read math in my browser, I need a math player. I have both <a href="https://github.com/tsengwoody/Access8Math">access8math</a> and <a href="https://addons.nvda-project.org/addons/MathCAT.en.html">mathcat</a>. I have been using mathcat lately though.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This is my workstation for LaTeX. I will try to update this post as it evolves. If you have any suggestion or comment, don’t hesitate to contact me using any of the options at the bottom of this page.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="latex," /><category term="vim," /><category term="nvda" /><category term="latex," /><category term="nvda," /><category term="mathml," /><category term="mathjax," /><category term="neovim," /><category term="vim" /><summary type="html"><![CDATA[My LaTeX setup]]></summary></entry><entry><title type="html">Are you blind?</title><link href="https://arfs6.me/blog/blind/2023/10/26/are-you-blind.html" rel="alternate" type="text/html" title="Are you blind?" /><published>2023-10-26T20:55:00+00:00</published><updated>2023-10-26T20:55:00+00:00</updated><id>https://arfs6.me/blog/blind/2023/10/26/are-you-blind</id><content type="html" xml:base="https://arfs6.me/blog/blind/2023/10/26/are-you-blind.html"><![CDATA[<p>I get asked this question often, The two times that stick out are:</p>
 
 <ul>
   <li>This one was when i was in secondary school (or high school).  I and my friends were going somewhere on foot, and they stopped to buy something. As usuall, my white cane was with one of them. Seeing that I know the road and I am already on a pavement (walkway), I decided to continue walking without a guide. A couple of steps later, I bumped into  someone. His first reaction was:
@@ -260,38 +313,4 @@ What about the <code class="language-plaintext highlighter-rouge">inner (i)|A (a
 <h2 id="conclusion">Conclusion</h2>
 
 <p>At the end of the day, if you don’t practice / try these commands, you will forget it all. But if you keep practising, it will become second nature!<br />
-If you found the post informative, please tell me on mastodon or twitter. Links below. Also, feedback and suggestions are welcomed.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="vim" /><category term="neovim" /><category term="vim" /><summary type="html"><![CDATA[I made an awesome discovery recently on vim. It was by accident. So, here is the jist]]></summary></entry><entry><title type="html">NvimPager</title><link href="https://arfs6.me/blog/neovim/2023/08/05/nvimpager.html" rel="alternate" type="text/html" title="NvimPager" /><published>2023-08-05T20:44:00+00:00</published><updated>2023-08-05T20:44:00+00:00</updated><id>https://arfs6.me/blog/neovim/2023/08/05/nvimpager</id><content type="html" xml:base="https://arfs6.me/blog/neovim/2023/08/05/nvimpager.html"><![CDATA[<p>I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is that you can’t open it unless standard input (stdin) reaches End-Of-File (EOF). This happens when you’re reading from a program that might take a while before it finishes writing it’s output. I hardly even encounter that. According to the project’s README, “large files are slowing down neovim on startup”. What about it’s advantages? Well … I get to use neovim as my pager. All the cool stuffs about neovim.</p>
-<h2 id="installation">Installation</h2>
-<p>You need <code class="language-plaintext highlighter-rouge">neovim</code> version 0.9 or later, <code class="language-plaintext highlighter-rouge">bash</code> (Most probably installed) and <code class="language-plaintext highlighter-rouge">scdoc</code> for man page.</p>
-
-<ol>
-  <li>Neovim: The neovim wiki has a page on installing neovim for all platforms. I prefer the App Image one. Link: https://github.com/neovim/neovim/wiki/Installing-Neovim</li>
-  <li>Bash: If you are using Linux, MacOS or WSL, you already have bash installed. I haven’t tried installing nvim pager on windows.</li>
-  <li>Scdoc: It is available on most package managers. Read <a href="https://command-not-found.com/scdoc">this</a> for more info.</li>
-</ol>
-
-<p>Now, lets install nvimpager!</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a directory to store the repo.</span>
-<span class="nb">mkdir</span> ~/repos
-<span class="nb">cd</span> ~/repos <span class="c"># Switching to the created directory</span>
-<span class="c"># clone nvim pager's repo</span>
-git clone https://github.com/lucc/nvimpager
-<span class="nb">cd </span>nvimpager <span class="c"># Go to nvim pager</span>
-make <span class="nb">install</span>
-</code></pre></div></div>
-<p>This will install nvim pager to the default location on your system. To change the location, set the <code class="language-plaintext highlighter-rouge">PREFIX</code> variable to the  location. e.g. To install nvimpager to <code class="language-plaintext highlighter-rouge">~/.local</code>, run:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make <span class="nv">PREFIX</span><span class="o">=</span><span class="nv">$HOME</span>/.local
-</code></pre></div></div>
-<h2 id="usage">Usage</h2>
-<p><code class="language-plaintext highlighter-rouge">nvimpager file</code> to view a file in nvim pager or pipe a command to nvim pager: <code class="language-plaintext highlighter-rouge">command --help | nvimpager</code>. I have aliased nvimpager to np.<br />
-Nvimpager has three mode:</p>
-<ol>
-  <li>Pager mode: In this mode, the input is opened in neovim with read only mode. You can use all normal neovim commands that doesn’t edit the buffer. To set pager mode, pass the <code class="language-plaintext highlighter-rouge">-p</code> option to nvim pager.</li>
-  <li>Cat mode: In this mode, all the input is written to your terminal’s standard output (stdout). It will still have syntax highlighting To set cat mode, pass <code class="language-plaintext highlighter-rouge">-c</code> to nvim pager.</li>
-  <li>Auto mode: This is the default. If the text can fit in your terminal, nvimpager uses cat mode. Otherwise, it uses pager mode.<br />
-To pass neovim options to nvim pager, specify it after the <code class="language-plaintext highlighter-rouge">--</code> option. i.e. <code class="language-plaintext highlighter-rouge">nvimpager -- -u ~/nvim/init.lua</code>. On this note, nvimpager’s configu files is different from that of neovim. That of nvimpager lives in <code class="language-plaintext highlighter-rouge">~/.config/nvimpager</code>. My nvimpager is focused on having very little startup time.<br />
-Lastly, to use nvimpager as your default pager, you have to set the <code class="language-plaintext highlighter-rouge">MANPAGER</code> and <code class="language-plaintext highlighter-rouge">PAGER</code> environment variables to <code class="language-plaintext highlighter-rouge">"nvimpager"</code>. And <code class="language-plaintext highlighter-rouge">git config core.pager "nvimpager"</code> for git.
-    <h2 id="note-for-vim-users">Note for Vim Users</h2>
-    <p>For vim users, you can checkout vimpager at https://github.com/rkitover/vimpager</p>
-  </li>
-</ol>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="neovim" /><summary type="html"><![CDATA[I have been using neovim as a pager for quite a while now. I use it for man pages, diffs and git logs. The only disadvantage of it so far is]]></summary></entry></feed>
+If you found the post informative, please tell me on mastodon or twitter. Links below. Also, feedback and suggestions are welcomed.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="vim" /><category term="neovim" /><category term="vim" /><summary type="html"><![CDATA[I made an awesome discovery recently on vim. It was by accident. So, here is the jist]]></summary></entry></feed>
