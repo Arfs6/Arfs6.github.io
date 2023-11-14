@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /contact/
+permalink: /contact/index.html
 title: Contact Me
 ---
 
