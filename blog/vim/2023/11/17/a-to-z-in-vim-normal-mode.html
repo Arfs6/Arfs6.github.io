@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>A To Z In Vim | Abdulqadir Ahmad</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="A To Z In Vim" />
+<meta name="author" content="Abdulqadir Ahmad" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I’ll be writing this from memory, no help pages, no googling!" />
+<meta property="og:description" content="I’ll be writing this from memory, no help pages, no googling!" />
+<link rel="canonical" href="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html" />
+<meta property="og:url" content="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html" />
+<meta property="og:site_name" content="Abdulqadir Ahmad" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-11-17T17:52:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="A To Z In Vim" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Abdulqadir Ahmad"},"dateModified":"2023-11-17T17:52:00+00:00","datePublished":"2023-11-17T17:52:00+00:00","description":"I’ll be writing this from memory, no help pages, no googling!","headline":"A To Z In Vim","mainEntityOfPage":{"@type":"WebPage","@id":"https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html"},"url":"https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://arfs6.me/feed.xml" title="Abdulqadir Ahmad" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Abdulqadir Ahmad</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/blog/">Blog</a><a class="page-link" href="/contact/index.html">Contact Me</a><a class="page-link" href="/projects/index.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">A To Z In Vim</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-11-17T17:52:00+00:00" itemprop="datePublished">Nov 17, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In this post, I’ll be writing what each alphabet on my keyboard means in normal mode of vim. Instead of going from <strong>a</strong> to <strong>z</strong>, I’ll follow the layout of my keyboard (quarti).</p>
+
+<p>I’ll be writing this from memory, no help pages, no googling! I don’t know all the upper case commands, so this list will contain only lower case characters.</p>
+
+<ol>
+  <li><strong>q</strong>: Records a macro. You must give it a register (character) to store the macro in it.</li>
+  <li><strong>w</strong>: Go to the next <code class="language-plaintext highlighter-rouge">word</code>.</li>
+  <li><strong>e</strong>: Go to the end of the current word.</li>
+  <li><strong>r</strong>: Replace the character under your cursor with another one. Type the replacement after typing the command.</li>
+  <li><strong>t</strong>: Till next occurrence of a character. Must type character after command.</li>
+  <li><strong>y</strong>: Copy / Yank. Must give text object or motion to copy.</li>
+  <li><strong>u</strong>: Undo.</li>
+  <li><strong>i</strong>: Switch to insert mode.</li>
+  <li><strong>o</strong>: Create a new line below the focused line and switch to insert mode.</li>
+  <li><strong>p</strong>: Paste.</li>
+  <li><strong>a</strong>: Switch to insert mode with cursor after the currently focused character.</li>
+  <li><strong>s</strong>: Delete the current character and switch to insert mode.</li>
+  <li><strong>d</strong>: Delete. Must pass text object or motion to delete.</li>
+  <li><strong>f</strong>: Go to the previous occurrence of a character. Must type character after command.</li>
+  <li><strong>g</strong>: Like a modifier. Characters typed after it has meaning. E.G. <code class="language-plaintext highlighter-rouge">gg</code> move to top. Mostly motion related commands.</li>
+  <li><strong>h</strong>: Previous character.</li>
+  <li><strong>j</strong>: Next line.</li>
+  <li><strong>k</strong>: previous line.</li>
+  <li><strong>l</strong>: Next character.</li>
+  <li><strong>z</strong>: Like <strong>g</strong>.</li>
+  <li><strong>x</strong>: Delete the character under the cursor.</li>
+  <li><strong>c</strong>: Deletes a text a switch to insert mode. Must pass text object or motion to delete.</li>
+  <li><strong>v</strong>: Switch to visual mode.</li>
+  <li><strong>b</strong>: Go to the start of the currently focused word. If already at start, go to the start of the previous word.</li>
+  <li><strong>n</strong>: Go to the next search result.</li>
+  <li><strong>m</strong>: Mark cursor position. Must specify register (character) to store mark in. Upper case registers are global and numeric registers are overriding at vim startup.</li>
+</ol>
+
+<h2 id="impressive">Impressive?</h2>
+
+<p>It took me months to reach this point. This twitter <a href="https://twitter.com/arf_s6/status/1632059902033051650?t=m_jcyAFRlWkS06MfzOGU9Q&amp;s=19">tweet</a> was like weeks after I started.</p>
+
+<p>I found new commands by mistake, I found other commands by reading. It just compiled over time and now, it is a muscle memory.</p>
+
+  </div><a class="u-url" href="/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Abdulqadir Ahmad</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Abdulqadir Ahmad</li><li><a class="u-email" href="mailto:arfs6.mail@gmail.com">arfs6.mail@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/arfs6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">arfs6</span></a></li><li><a href="https://hachyderm.io/@arfs6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">arfs6</span></a></li><li><a href="https://www.twitter.com/arf_s6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">arf_s6</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Abdulqadir Ahmad&#39;s website. Where you can read his blogs, and get to know his projects.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,4 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-15T20:50:24+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Getting started with python</title><link href="https://arfs6.me/blog/python/2023/11/14/getting-started-with-python.html" rel="alternate" type="text/html" title="Getting started with python" /><published>2023-11-14T13:14:00+00:00</published><updated>2023-11-14T13:14:00+00:00</updated><id>https://arfs6.me/blog/python/2023/11/14/getting-started-with-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/11/14/getting-started-with-python.html"><![CDATA[<p>My goal in this article is to get you to write some python code. I am a big believer in learning by doing, and this article is written with that in mind.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-17T19:33:01+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">A To Z In Vim</title><link href="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html" rel="alternate" type="text/html" title="A To Z In Vim" /><published>2023-11-17T17:52:00+00:00</published><updated>2023-11-17T17:52:00+00:00</updated><id>https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode</id><content type="html" xml:base="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html"><![CDATA[<p>In this post, I’ll be writing what each alphabet on my keyboard means in normal mode of vim. Instead of going from <strong>a</strong> to <strong>z</strong>, I’ll follow the layout of my keyboard (quarti).</p>
+
+<p>I’ll be writing this from memory, no help pages, no googling! I don’t know all the upper case commands, so this list will contain only lower case characters.</p>
+
+<ol>
+  <li><strong>q</strong>: Records a macro. You must give it a register (character) to store the macro in it.</li>
+  <li><strong>w</strong>: Go to the next <code class="language-plaintext highlighter-rouge">word</code>.</li>
+  <li><strong>e</strong>: Go to the end of the current word.</li>
+  <li><strong>r</strong>: Replace the character under your cursor with another one. Type the replacement after typing the command.</li>
+  <li><strong>t</strong>: Till next occurrence of a character. Must type character after command.</li>
+  <li><strong>y</strong>: Copy / Yank. Must give text object or motion to copy.</li>
+  <li><strong>u</strong>: Undo.</li>
+  <li><strong>i</strong>: Switch to insert mode.</li>
+  <li><strong>o</strong>: Create a new line below the focused line and switch to insert mode.</li>
+  <li><strong>p</strong>: Paste.</li>
+  <li><strong>a</strong>: Switch to insert mode with cursor after the currently focused character.</li>
+  <li><strong>s</strong>: Delete the current character and switch to insert mode.</li>
+  <li><strong>d</strong>: Delete. Must pass text object or motion to delete.</li>
+  <li><strong>f</strong>: Go to the previous occurrence of a character. Must type character after command.</li>
+  <li><strong>g</strong>: Like a modifier. Characters typed after it has meaning. E.G. <code class="language-plaintext highlighter-rouge">gg</code> move to top. Mostly motion related commands.</li>
+  <li><strong>h</strong>: Previous character.</li>
+  <li><strong>j</strong>: Next line.</li>
+  <li><strong>k</strong>: previous line.</li>
+  <li><strong>l</strong>: Next character.</li>
+  <li><strong>z</strong>: Like <strong>g</strong>.</li>
+  <li><strong>x</strong>: Delete the character under the cursor.</li>
+  <li><strong>c</strong>: Deletes a text a switch to insert mode. Must pass text object or motion to delete.</li>
+  <li><strong>v</strong>: Switch to visual mode.</li>
+  <li><strong>b</strong>: Go to the start of the currently focused word. If already at start, go to the start of the previous word.</li>
+  <li><strong>n</strong>: Go to the next search result.</li>
+  <li><strong>m</strong>: Mark cursor position. Must specify register (character) to store mark in. Upper case registers are global and numeric registers are overriding at vim startup.</li>
+</ol>
+
+<h2 id="impressive">Impressive?</h2>
+
+<p>It took me months to reach this point. This twitter <a href="https://twitter.com/arf_s6/status/1632059902033051650?t=m_jcyAFRlWkS06MfzOGU9Q&amp;s=19">tweet</a> was like weeks after I started.</p>
+
+<p>I found new commands by mistake, I found other commands by reading. It just compiled over time and now, it is a muscle memory.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="vim" /><summary type="html"><![CDATA[I'll be writing this from memory, no help pages, no googling!]]></summary></entry><entry><title type="html">Getting started with python</title><link href="https://arfs6.me/blog/python/2023/11/14/getting-started-with-python.html" rel="alternate" type="text/html" title="Getting started with python" /><published>2023-11-14T13:14:00+00:00</published><updated>2023-11-14T13:14:00+00:00</updated><id>https://arfs6.me/blog/python/2023/11/14/getting-started-with-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/11/14/getting-started-with-python.html"><![CDATA[<p>My goal in this article is to get you to write some python code. I am a big believer in learning by doing, and this article is written with that in mind.</p>
 
 <h2 id="project">Project</h2>
 
@@ -373,6 +410,4 @@ import gettext
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>With the information you have now, you can navigate arround the linux file system with ease. With time, you’ll recognize other patterns and key directories like <code class="language-plaintext highlighter-rouge">lib</code> and <code class="language-plaintext highlighter-rouge">/var/</code>.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="linux" /><category term="linux" /><summary type="html"><![CDATA[When I first layed my hands on a unix computer, I was confused. I had no idea where to keep my files or where some files are located]]></summary></entry><entry><title type="html">Are Cellphones Connecting or Disconnecting People</title><link href="https://arfs6.me/blog/musings/2023/09/21/cellphones-disconnecting-people.html" rel="alternate" type="text/html" title="Are Cellphones Connecting or Disconnecting People" /><published>2023-09-21T20:26:00+00:00</published><updated>2023-09-21T20:26:00+00:00</updated><id>https://arfs6.me/blog/musings/2023/09/21/cellphones-disconnecting-people</id><content type="html" xml:base="https://arfs6.me/blog/musings/2023/09/21/cellphones-disconnecting-people.html"><![CDATA[<p>It is sad how people are in the same place but there minds are somewhere else. That is what cellphones have done to us. It disconnects you with people arround you.</p>
-
-<p>I used to think it was social media that does that. Now, I have realised, it is the phone itself. Social media is just part of the problem.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="musings" /><category term="celphone" /><summary type="html"><![CDATA[It is sad how people are in the same place but there minds are somewhere else]]></summary></entry></feed>
+<p>With the information you have now, you can navigate arround the linux file system with ease. With time, you’ll recognize other patterns and key directories like <code class="language-plaintext highlighter-rouge">lib</code> and <code class="language-plaintext highlighter-rouge">/var/</code>.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="linux" /><category term="linux" /><summary type="html"><![CDATA[When I first layed my hands on a unix computer, I was confused. I had no idea where to keep my files or where some files are located]]></summary></entry></feed>
