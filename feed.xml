@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-17T19:33:01+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">A To Z In Vim</title><link href="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html" rel="alternate" type="text/html" title="A To Z In Vim" /><published>2023-11-17T17:52:00+00:00</published><updated>2023-11-17T17:52:00+00:00</updated><id>https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode</id><content type="html" xml:base="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html"><![CDATA[<p>In this post, I’ll be writing what each alphabet on my keyboard means in normal mode of vim. Instead of going from <strong>a</strong> to <strong>z</strong>, I’ll follow the layout of my keyboard (quarti).</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-22T17:38:45+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Building The YALMA App</title><link href="https://arfs6.me/blog/python/2023/11/22/building-the-yalma-app.html" rel="alternate" type="text/html" title="Building The YALMA App" /><published>2023-11-22T15:58:00+00:00</published><updated>2023-11-22T15:58:00+00:00</updated><id>https://arfs6.me/blog/python/2023/11/22/building-the-yalma-app</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/11/22/building-the-yalma-app.html"><![CDATA[<p>The goal of this blog post is to guide you to build an app in python. Some people get scared when they hear “app”, don’t worry, I don’t think the app will pass 100 lines.</p>
+
+<h2 id="introducing-yalma">Introducing YALMA</h2>
+
+<p>YALMA (Yet Another Link Manager App) is a link manager build with python. Check this page out for an example of how it looks like; <a href="https://gist.github.com/Arfs6/60e0539ab49d83e12c5bf6e7c401fefb">https://gist.github.com/Arfs6/60e0539ab49d83e12c5bf6e7c401fefb</a>. The main aim of the app is to accept and store links. For example, you can store the above link in the app and give it the name “YALMA Example”. Then when next you need it, you can just open YALMA and ask for it.</p>
+
+<h2 id="resources">Resources</h2>
+
+<p>You might need some resources to be able to do some steps. I don’t think me writing it will be a good idea, because of time, and there are lots of excellent resources out there. So, what I am planning to do is to get links to those resources and add it to each step.</p>
+
+<h2 id="steps">Steps</h2>
+
+<p>All the solution to the steps should be in one python file.</p>
+
+<h3 id="step-1---welcome-your-user">Step 1 - Welcome your user</h3>
+
+<p>A nice welcome message to your user is a plus always. Welcome your user and explain briefly what YALMA is:</p>
+
+<ol>
+  <li>Display <code class="language-plaintext highlighter-rouge">YALMA</code> followed be a new line. Use <em>tab</em> character to shift it a little to the right.</li>
+  <li>Display a brief explanation of what <strong>YALMA</strong> is: <code class="language-plaintext highlighter-rouge">A link manager.</code></li>
+</ol>
+
+<h4 id="example">Example</h4>
+
+<blockquote>
+  <p>This is what you should get when you run your code.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	YALMA
+A link manager.
+</code></pre></div></div>
+
+<blockquote>
+  <p>Tip: A tab character is represented by <code class="language-plaintext highlighter-rouge">\t</code> in python, It should be in a string.</p>
+</blockquote>
+
+<h2 id="have-feedback--questions">Have Feedback / Questions?</h2>
+
+<p>If you no where to get me, <strong>do not hesitate</strong> to contact me. If you don’t, there are usefull links at the bottom of this page.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><summary type="html"><![CDATA[The goal of this blog post is to guide you to build an app in python. Some people get scared when they hear “app”, don’t worry, I don’t think the app will pass 100 lines.]]></summary></entry><entry><title type="html">A To Z In Vim</title><link href="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html" rel="alternate" type="text/html" title="A To Z In Vim" /><published>2023-11-17T17:52:00+00:00</published><updated>2023-11-17T17:52:00+00:00</updated><id>https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode</id><content type="html" xml:base="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html"><![CDATA[<p>In this post, I’ll be writing what each alphabet on my keyboard means in normal mode of vim. Instead of going from <strong>a</strong> to <strong>z</strong>, I’ll follow the layout of my keyboard (quarti).</p>
 
 <p>I’ll be writing this from memory, no help pages, no googling! I don’t know all the upper case commands, so this list will contain only lower case characters.</p>
 
@@ -363,51 +402,4 @@ import gettext
 <ol>
   <li>If a file with the same name with the one I want to move has already exist, it will fail.</li>
   <li>The files might use a lot of space overtime. I thought of using the <code class="language-plaintext highlighter-rouge">/tmp/</code> directory since the os deletes file in there automatically.</li>
-</ol>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="linux" /><category term="linux" /><summary type="html"><![CDATA[The `rm` command is dangerous. I have created an]]></summary></entry><entry><title type="html">Reproducing bugs</title><link href="https://arfs6.me/blog/programming/2023/10/01/chasing-bugs.html" rel="alternate" type="text/html" title="Reproducing bugs" /><published>2023-10-01T19:03:00+00:00</published><updated>2023-10-01T19:03:00+00:00</updated><id>https://arfs6.me/blog/programming/2023/10/01/chasing-bugs</id><content type="html" xml:base="https://arfs6.me/blog/programming/2023/10/01/chasing-bugs.html"><![CDATA[<p>As a developer, you are always surrounded by bugs. It is funny how sometimes, your goal is to reproduce the bug.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="programming" /><category term="programming," /><category term="bugs" /><summary type="html"><![CDATA[It is funny how sometimes, your goal is to reproduce the bug.]]></summary></entry><entry><title type="html">Navigating Linux File System</title><link href="https://arfs6.me/blog/linux/2023/09/27/navigating-linux-filesystem.html" rel="alternate" type="text/html" title="Navigating Linux File System" /><published>2023-09-27T12:49:00+00:00</published><updated>2023-09-27T12:49:00+00:00</updated><id>https://arfs6.me/blog/linux/2023/09/27/navigating-linux-filesystem</id><content type="html" xml:base="https://arfs6.me/blog/linux/2023/09/27/navigating-linux-filesystem.html"><![CDATA[<p>When I first layed my hands on a unix computer, I was confused. I had no idea where to keep my files or where some files are located. Fast forward, now I am comfortable in linux. I spend most of my time in <a href="https://learn.microsoft.com/en-us/windows/wsl/about">wsl</a>. I am even writing this article in it.</p>
-
-<p>In this post, I will walk you through the linux file system. You’ll know where to keep your file and where some key folders are located. But before we start, let’s go through some jargons.</p>
-
-<h2 id="jargons">Jargons</h2>
-
-<ol>
-  <li>Directory: A directory is like a folder in windows. It holds other directories and files.</li>
-  <li><em>/</em>: Linux uses a forward slash (<em>/</em>) to seperate directories and files. Windows uses a back slash (**).</li>
-  <li>path: Specifies location of a file / directory in a filesystem. e.g. <code class="language-plaintext highlighter-rouge">/root/.bashrc</code>. Remember: <code class="language-plaintext highlighter-rouge">/</code> is used to seperate files and directories in linux. So, <code class="language-plaintext highlighter-rouge">/root/.bashrc</code> means the <code class="language-plaintext highlighter-rouge">.bashrc</code> file is in the <code class="language-plaintext highlighter-rouge">root</code> directory.</li>
-  <li>File Permissions: This determines who can read, write or execute a file / directory.</li>
-</ol>
-
-<h2 id="root-directory---">Root Directory - <code class="language-plaintext highlighter-rouge">/</code></h2>
-
-<p>This is the main directory. it holds all other directories. Typically, in windows, a path to a file will start with <code class="language-plaintext highlighter-rouge">c:</code>. Where the <code class="language-plaintext highlighter-rouge">c</code> is the drive letter. In linux, a path always starts with <code class="language-plaintext highlighter-rouge">/</code>. Windows uses the drive letter to represent a storage device (like flash) or a partition. While on linux, all storage devices and partitions are in the root directory.</p>
-
-<h2 id="home-directory---">Home Directory - <code class="language-plaintext highlighter-rouge">~</code></h2>
-
-<p>This is usually where you find yourself when you login. If you’re login as the root user, that will be <code class="language-plaintext highlighter-rouge">/root/</code>. If you’re login as another user, e.g. ubuntu, that will be <code class="language-plaintext highlighter-rouge">/home/ubuntu/</code>. A user has read, write and execute permissions to all the files and folders in his home directory unless explicitly changed. <code class="language-plaintext highlighter-rouge">~</code> is a special character that represents a users home directory. You can use it in paths.</p>
-
-<p>This is where I keep my files. I have a folder <code class="language-plaintext highlighter-rouge">docs</code> for documents, <code class="language-plaintext highlighter-rouge">repos</code> for git repos, <code class="language-plaintext highlighter-rouge">projects</code> for my projects and <code class="language-plaintext highlighter-rouge">alx</code> for <a href="https://alxswe.com">alx</a> related files.</p>
-
-<h2 id="temporary-files-directory---tmp">Temporary files directory - <code class="language-plaintext highlighter-rouge">/tmp/</code></h2>
-
-<p>This is a folder where you can keep temporary files. The operating system delete files that are not used for a while. So, don’t keep anything useful here. Some programs keeps there temporary files here. I keep some files I download here. e.g. A script for installing something. I often use it when I want a file temporarily. e.g. A small C program.</p>
-
-<h2 id="executables-directory---bin">Executables Directory - <code class="language-plaintext highlighter-rouge">bin</code></h2>
-
-<p>The <code class="language-plaintext highlighter-rouge">bin</code> directory is used for holding executables. There are several <code class="language-plaintext highlighter-rouge">bin</code> directories. Some of the most important include:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">/usr/bin/</code> and <code class="language-plaintext highlighter-rouge">/usr/local/bin/</code>: Most apps you install using the <code class="language-plaintext highlighter-rouge">apt</code> command and default programs like <code class="language-plaintext highlighter-rouge">ls</code> are here.</li>
-  <li><code class="language-plaintext highlighter-rouge">~/.local/bin/</code>: This bin directory is local to a user. My <a href="https://github.com/neovim/neovim">neovim</a> executable is here.</li>
-</ul>
-
-<h2 id="other-important-directories">Other important Directories</h2>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">/var/log/</code>: Some program store it’s log files here. Useful for debugging.</li>
-  <li><code class="language-plaintext highlighter-rouge">/etc/</code>: System configuration files and other program configuration files are here. Don’t mess with files here unless you know what you’re doing.</li>
-  <li><code class="language-plaintext highlighter-rouge">~/&lt;program name&gt;/</code>: Where <code class="language-plaintext highlighter-rouge">&lt;program name&gt;</code> is a program’s name; Holds user specific configuration for that program. e.g. <code class="language-plaintext highlighter-rouge">~/.ssh/</code> for ssh and <code class="language-plaintext highlighter-rouge">~/.vim/</code> for vim.</li>
-  <li><code class="language-plaintext highlighter-rouge">~/.config/</code>: Config directory for some programs.</li>
-</ul>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>With the information you have now, you can navigate arround the linux file system with ease. With time, you’ll recognize other patterns and key directories like <code class="language-plaintext highlighter-rouge">lib</code> and <code class="language-plaintext highlighter-rouge">/var/</code>.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="linux" /><category term="linux" /><summary type="html"><![CDATA[When I first layed my hands on a unix computer, I was confused. I had no idea where to keep my files or where some files are located]]></summary></entry></feed>
+</ol>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="linux" /><category term="linux" /><summary type="html"><![CDATA[The `rm` command is dangerous. I have created an]]></summary></entry><entry><title type="html">Reproducing bugs</title><link href="https://arfs6.me/blog/programming/2023/10/01/chasing-bugs.html" rel="alternate" type="text/html" title="Reproducing bugs" /><published>2023-10-01T19:03:00+00:00</published><updated>2023-10-01T19:03:00+00:00</updated><id>https://arfs6.me/blog/programming/2023/10/01/chasing-bugs</id><content type="html" xml:base="https://arfs6.me/blog/programming/2023/10/01/chasing-bugs.html"><![CDATA[<p>As a developer, you are always surrounded by bugs. It is funny how sometimes, your goal is to reproduce the bug.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="programming" /><category term="programming," /><category term="bugs" /><summary type="html"><![CDATA[It is funny how sometimes, your goal is to reproduce the bug.]]></summary></entry></feed>
