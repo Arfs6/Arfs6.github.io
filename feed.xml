@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-22T17:38:45+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Building The YALMA App</title><link href="https://arfs6.me/blog/python/2023/11/22/building-the-yalma-app.html" rel="alternate" type="text/html" title="Building The YALMA App" /><published>2023-11-22T15:58:00+00:00</published><updated>2023-11-22T15:58:00+00:00</updated><id>https://arfs6.me/blog/python/2023/11/22/building-the-yalma-app</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/11/22/building-the-yalma-app.html"><![CDATA[<p>The goal of this blog post is to guide you to build an app in python. Some people get scared when they hear “app”, don’t worry, I don’t think the app will pass 100 lines.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-23T20:20:28+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Building The YALMA App</title><link href="https://arfs6.me/blog/python/2023/11/22/building-the-yalma-app.html" rel="alternate" type="text/html" title="Building The YALMA App" /><published>2023-11-22T15:58:00+00:00</published><updated>2023-11-22T15:58:00+00:00</updated><id>https://arfs6.me/blog/python/2023/11/22/building-the-yalma-app</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/11/22/building-the-yalma-app.html"><![CDATA[<p>The goal of this blog post is to guide you to build an app in python. Some people get scared when they hear “app”, don’t worry, I don’t think the app will pass 100 lines.</p>
 
 <h2 id="introducing-yalma">Introducing YALMA</h2>
 
@@ -17,7 +17,7 @@
 <p>A nice welcome message to your user is a plus always. Welcome your user and explain briefly what YALMA is:</p>
 
 <ol>
-  <li>Display <code class="language-plaintext highlighter-rouge">YALMA</code> followed be a new line. Use <em>tab</em> character to shift it a little to the right.</li>
+  <li>Display <code class="language-plaintext highlighter-rouge">YALMA</code> followed by a new line. Use <em>tab</em> character to shift it a little to the right.</li>
   <li>Display a brief explanation of what <strong>YALMA</strong> is: <code class="language-plaintext highlighter-rouge">A link manager.</code></li>
 </ol>
 
@@ -35,9 +35,31 @@ A link manager.
   <p>Tip: A tab character is represented by <code class="language-plaintext highlighter-rouge">\t</code> in python, It should be in a string.</p>
 </blockquote>
 
+<h3 id="step-2---create-link">Step 2 - Create link</h3>
+
+<p>Let’s write the code to create a link:</p>
+
+<ol>
+  <li>Create a function <code class="language-plaintext highlighter-rouge">create_link</code>.</li>
+  <li>It should prompt the user for a name for the link.</li>
+  <li>It should prompt the user for the link to store.</li>
+  <li>Store both the name and the link provided above in a dictionary. The key should be <code class="language-plaintext highlighter-rouge">name</code> and <code class="language-plaintext highlighter-rouge">url</code> for the name and link respectively.</li>
+  <li>Return the created dictionary.</li>
+  <li>For testing purposes, call the function and print what the function returns. <em>This will be removed later</em>.</li>
+</ol>
+
+<h4 id="example-1">Example</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	YALMA
+A link manager.
+What is the name of the link? Abdulqadir Ahmad's website
+What is the URL (link) of the link? https://arfs6.me
+{'name': "Abdulqadir Ahmad's website", 'url': 'https://arfs6.me'}
+</code></pre></div></div>
+
 <h2 id="have-feedback--questions">Have Feedback / Questions?</h2>
 
-<p>If you no where to get me, <strong>do not hesitate</strong> to contact me. If you don’t, there are usefull links at the bottom of this page.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><summary type="html"><![CDATA[The goal of this blog post is to guide you to build an app in python. Some people get scared when they hear “app”, don’t worry, I don’t think the app will pass 100 lines.]]></summary></entry><entry><title type="html">A To Z In Vim</title><link href="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html" rel="alternate" type="text/html" title="A To Z In Vim" /><published>2023-11-17T17:52:00+00:00</published><updated>2023-11-17T17:52:00+00:00</updated><id>https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode</id><content type="html" xml:base="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html"><![CDATA[<p>In this post, I’ll be writing what each alphabet on my keyboard means in normal mode of vim. Instead of going from <strong>a</strong> to <strong>z</strong>, I’ll follow the layout of my keyboard (quarti).</p>
+<p>If you no where to get me, <strong>do not hesitate</strong> to contact me. If you don’t, there are useful links at the bottom of this page.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><summary type="html"><![CDATA[The goal of this blog post is to guide you to build an app in python. Some people get scared when they hear “app”, don’t worry, I don’t think the app will pass 100 lines.]]></summary></entry><entry><title type="html">A To Z In Vim</title><link href="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html" rel="alternate" type="text/html" title="A To Z In Vim" /><published>2023-11-17T17:52:00+00:00</published><updated>2023-11-17T17:52:00+00:00</updated><id>https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode</id><content type="html" xml:base="https://arfs6.me/blog/vim/2023/11/17/a-to-z-in-vim-normal-mode.html"><![CDATA[<p>In this post, I’ll be writing what each alphabet on my keyboard means in normal mode of vim. Instead of going from <strong>a</strong> to <strong>z</strong>, I’ll follow the layout of my keyboard (quarti).</p>
 
 <p>I’ll be writing this from memory, no help pages, no googling! I don’t know all the upper case commands, so this list will contain only lower case characters.</p>
 
