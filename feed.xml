@@ -1,4 +1,141 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-26T06:50:06+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Why I started programming</title><link href="https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming.html" rel="alternate" type="text/html" title="Why I started programming" /><published>2023-11-24T07:55:00+00:00</published><updated>2023-11-24T07:55:00+00:00</updated><id>https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming</id><content type="html" xml:base="https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming.html"><![CDATA[<p>I started learning python February 2022 using an awesome book - Python Crash Course. Why? I couldn’t read financial chart, candle stick charts to be specific. This is how it looks like: <a href="https://commons.wikimedia.org/wiki/File:Candlestick_Chart_in_MetaTrader_5.png#/media/File:Candlestick_Chart_in_MetaTrader_5.png">https://commons.wikimedia.org/wiki/File:Candlestick_Chart_in_MetaTrader_5.png#/media/File:Candlestick_Chart_in_MetaTrader_5.png</a>. In case you don’t know, I am blind.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-26T19:13:50+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Disassembling exception handling in python</title><link href="https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python.html" rel="alternate" type="text/html" title="Disassembling exception handling in python" /><published>2023-11-26T14:00:00+00:00</published><updated>2023-11-26T14:00:00+00:00</updated><id>https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python.html"><![CDATA[<p>If you have written some code in python, then you have most probably met an exception. Exceptions occurs when an operation fails. Example, converting <em>one</em> to an integer.</p>
+
+<p>When an exception is raised and it isn’t handled, python displays an error to the console and exits the program. As a user, I wouldn’t want an app to crash just because I supplied the wrong input. This is where exception handling comes.</p>
+
+<h2 id="introducing-the-try-block">Introducing the <code class="language-plaintext highlighter-rouge">try</code> block</h2>
+
+<p><code class="language-plaintext highlighter-rouge">try</code> blocks are used to handle exceptions in python. It has three clauses:</p>
+
+<ol>
+  <li><a href="#except"><code class="language-plaintext highlighter-rouge">except</code></a></li>
+  <li><a href="#else"><code class="language-plaintext highlighter-rouge">else</code></a></li>
+  <li><a href="finally"><code class="language-plaintext highlighter-rouge">finally</code></a></li>
+</ol>
+
+<p>The code in <code class="language-plaintext highlighter-rouge">except</code> and <code class="language-plaintext highlighter-rouge">else</code> blocks executes based on what happens in the <code class="language-plaintext highlighter-rouge">try</code> block and the code in the <code class="language-plaintext highlighter-rouge">finally</code> block always runs.</p>
+
+<p>Now, let me use an example to explain what each blocks does.</p>
+
+<p>Given the following code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>What will happen when I type twenty? Let’s run it and see what we’ll get:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>How old are you? Twenty
+Traceback (most recent call last):
+  File "/tmp/main.py", line 1, in &lt;module&gt;
+    age = int(input("How old are you? "))
+ValueError: invalid literal for int() with base 10: 'Twenty'
+</code></pre></div></div>
+
+<p>This isn’t something we will want our users to see. A better thing is something like <code class="language-plaintext highlighter-rouge">Have no idea what Twenty is.</code>.</p>
+
+<p>Now, to be able to handle an exception, we need to put the code that can raise the exception in a <code class="language-plaintext highlighter-rouge">try</code> block. E.G.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Now, let’s run this code and see what will happen:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  File "/tmp/main.py", line 2
+    age = int(input("How old are you? "))
+SyntaxError: expected 'except' or 'finally' block
+</code></pre></div></div>
+
+<p>A <code class="language-plaintext highlighter-rouge">try</code> block must  have at least one <a href="#except"><code class="language-plaintext highlighter-rouge">except</code></a> or a <a href="#finally"><code class="language-plaintext highlighter-rouge">finally</code></a> block.</p>
+
+<p>This ties to the next section:</p>
+
+<h2 id="except">except</h2>
+
+<p>The most basic form of an <code class="language-plaintext highlighter-rouge">except</code> statement is <code class="language-plaintext highlighter-rouge">except:</code>, for example:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">I think you didn</span><span class="sh">'</span><span class="s">t type a number. Try again!</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Let’s try and recreate the error again.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I think you didn't type a number. Try again!
+</code></pre></div></div>
+
+<p>It worked! And it smells! Let me explain.</p>
+
+<p>The above <code class="language-plaintext highlighter-rouge">except</code> statement doesn’t specify which exception it’s handles. This has the effects of passing all unhandled exceptions to it. Which is something you will not like. Why? some exceptions are meant to be handled differently. For example, when you hit ctrl+c while the above code is waiting for user input, python raises a <code class="language-plaintext highlighter-rouge">KeyboardInterupt</code> exception. This usually signals the user wants to exit the program, so you are supposed to exit the program not print something.</p>
+
+<p>So, how do we specify which exception to handle? by writing it after <code class="language-plaintext highlighter-rouge">except</code>. How do we know which exception to handle? Usually, I allow python to tell me. If you check the error we got in our first example, the last line is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError: invalid literal for int() with base 10: 'Twenty'
+</code></pre></div></div>
+
+<p>The exception to handle in this case is <code class="language-plaintext highlighter-rouge">ValueError</code>.</p>
+
+<p>Let’s handle <code class="language-plaintext highlighter-rouge">ValueError</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+<span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">I think you didn</span><span class="sh">'</span><span class="s">t type a number. Try again!</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Hmmmm, our code has stopped smelling.</p>
+
+<p>The last info for this section is, you can have more than one <code class="language-plaintext highlighter-rouge">except</code> blocks under a <code class="language-plaintext highlighter-rouge">try</code> block. So, you can handle <code class="language-plaintext highlighter-rouge">KeyboardInterupt</code> too if you like.</p>
+
+<h2 id="else">else</h2>
+
+<p>The code in the <code class="language-plaintext highlighter-rouge">else</code> block depends on the code in the <code class="language-plaintext highlighter-rouge">try</code> block to run without an exception. In our case, we can do something with the age variable. E.G.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+<span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">I think you didn</span><span class="sh">'</span><span class="s">t type a number. Try again!</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Now I know you</span><span class="sh">'</span><span class="s">re</span><span class="sh">"</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="sh">"</span><span class="s">years old.</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now, let’s run our code and pass it an appropriate value.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>How old are you? 20
+Now I know you're 20 years old.
+</code></pre></div></div>
+
+<h2 id="finally">finally</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">finally</code> block always executes. In our case, we can print a goodbye to our user.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+<span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">I think you didn</span><span class="sh">'</span><span class="s">t type a number. Try again!</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Now I know you</span><span class="sh">'</span><span class="s">re</span><span class="sh">"</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="sh">"</span><span class="s">years old.</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Thank you for sailing with us.</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Let’s try with an appropriate input:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>How old are you? 20
+Now I know you're 20 years old.
+Thank you for sailing with us.
+</code></pre></div></div>
+
+<p>OK… Let’s give it <em>Twenty</em> now:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>How old are you? Twenty
+I think you didn't type a number. Try again!
+Thank you for sailing with us.
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This is an introduction to exception handling in python. Lots of things has been ignored intensionally.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><summary type="html"><![CDATA[As a user, I wouldn't want an app to crash just because I supplied the wrong input]]></summary></entry><entry><title type="html">Why I started programming</title><link href="https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming.html" rel="alternate" type="text/html" title="Why I started programming" /><published>2023-11-24T07:55:00+00:00</published><updated>2023-11-24T07:55:00+00:00</updated><id>https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming</id><content type="html" xml:base="https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming.html"><![CDATA[<p>I started learning python February 2022 using an awesome book - Python Crash Course. Why? I couldn’t read financial chart, candle stick charts to be specific. This is how it looks like: <a href="https://commons.wikimedia.org/wiki/File:Candlestick_Chart_in_MetaTrader_5.png#/media/File:Candlestick_Chart_in_MetaTrader_5.png">https://commons.wikimedia.org/wiki/File:Candlestick_Chart_in_MetaTrader_5.png#/media/File:Candlestick_Chart_in_MetaTrader_5.png</a>. In case you don’t know, I am blind.</p>
 
 <p>Why python? Because I have seen some solutions built with python, and I heard you can build almost anything in python.</p>
 
@@ -466,18 +603,4 @@ import gettext
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>So, I wonder, which other tools I use regularly are also python scripts?</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><category term="python," /><category term="ufw" /><summary type="html"><![CDATA[I wonder which tool I am using also runs on python]]></summary></entry><entry><title type="html">Using mv instead of rm</title><link href="https://arfs6.me/blog/linux/2023/10/02/using-mv-in-place-of-rm.html" rel="alternate" type="text/html" title="Using mv instead of rm" /><published>2023-10-02T10:35:00+00:00</published><updated>2023-10-02T10:35:00+00:00</updated><id>https://arfs6.me/blog/linux/2023/10/02/using-mv-in-place-of-rm</id><content type="html" xml:base="https://arfs6.me/blog/linux/2023/10/02/using-mv-in-place-of-rm.html"><![CDATA[<p>The <code class="language-plaintext highlighter-rouge">rm</code> command is dangerous. I have created an alias to use <code class="language-plaintext highlighter-rouge">2smvrm</code> instead of it. The command is in my <code class="language-plaintext highlighter-rouge">~/.bashrc</code>.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias rm</span><span class="o">=</span><span class="s1">'mv --force -t ~/.local/share/trash '</span>
-</code></pre></div></div>
-
-<p>The <code class="language-plaintext highlighter-rouge">-t</code> option allows me to specify the target directory at the beginning of the command. The alias moves all the files specified to <code class="language-plaintext highlighter-rouge">~/.local/share/trash</code>. This means, if I change my mind at any time, I can pay the directory a visit.</p>
-
-<p>If I really want to use <code class="language-plaintext highlighter-rouge">rm</code>, I use <code class="language-plaintext highlighter-rouge">/bin/rm</code>.</p>
-
-<p>There are a lot of issues with the above command.</p>
-
-<ol>
-  <li>If a file with the same name with the one I want to move has already exist, it will fail.</li>
-  <li>The files might use a lot of space overtime. I thought of using the <code class="language-plaintext highlighter-rouge">/tmp/</code> directory since the os deletes file in there automatically.</li>
-</ol>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="linux" /><category term="linux" /><summary type="html"><![CDATA[The `rm` command is dangerous. I have created an]]></summary></entry></feed>
+<p>So, I wonder, which other tools I use regularly are also python scripts?</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><category term="python," /><category term="ufw" /><summary type="html"><![CDATA[I wonder which tool I am using also runs on python]]></summary></entry></feed>

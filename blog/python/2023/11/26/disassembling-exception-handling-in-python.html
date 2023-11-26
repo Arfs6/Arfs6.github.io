@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Disassembling exception handling in python | Abdulqadir Ahmad</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Disassembling exception handling in python" />
+<meta name="author" content="Abdulqadir Ahmad" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="As a user, I wouldn’t want an app to crash just because I supplied the wrong input" />
+<meta property="og:description" content="As a user, I wouldn’t want an app to crash just because I supplied the wrong input" />
+<link rel="canonical" href="https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python.html" />
+<meta property="og:url" content="https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python.html" />
+<meta property="og:site_name" content="Abdulqadir Ahmad" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-11-26T14:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Disassembling exception handling in python" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Abdulqadir Ahmad"},"dateModified":"2023-11-26T14:00:00+00:00","datePublished":"2023-11-26T14:00:00+00:00","description":"As a user, I wouldn’t want an app to crash just because I supplied the wrong input","headline":"Disassembling exception handling in python","mainEntityOfPage":{"@type":"WebPage","@id":"https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python.html"},"url":"https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://arfs6.me/feed.xml" title="Abdulqadir Ahmad" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Abdulqadir Ahmad</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/blog/">Blog</a><a class="page-link" href="/contact/index.html">Contact Me</a><a class="page-link" href="/projects/index.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Disassembling exception handling in python</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-11-26T14:00:00+00:00" itemprop="datePublished">Nov 26, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>If you have written some code in python, then you have most probably met an exception. Exceptions occurs when an operation fails. Example, converting <em>one</em> to an integer.</p>
+
+<p>When an exception is raised and it isn’t handled, python displays an error to the console and exits the program. As a user, I wouldn’t want an app to crash just because I supplied the wrong input. This is where exception handling comes.</p>
+
+<h2 id="introducing-the-try-block">Introducing the <code class="language-plaintext highlighter-rouge">try</code> block</h2>
+
+<p><code class="language-plaintext highlighter-rouge">try</code> blocks are used to handle exceptions in python. It has three clauses:</p>
+
+<ol>
+  <li><a href="#except"><code class="language-plaintext highlighter-rouge">except</code></a></li>
+  <li><a href="#else"><code class="language-plaintext highlighter-rouge">else</code></a></li>
+  <li><a href="finally"><code class="language-plaintext highlighter-rouge">finally</code></a></li>
+</ol>
+
+<p>The code in <code class="language-plaintext highlighter-rouge">except</code> and <code class="language-plaintext highlighter-rouge">else</code> blocks executes based on what happens in the <code class="language-plaintext highlighter-rouge">try</code> block and the code in the <code class="language-plaintext highlighter-rouge">finally</code> block always runs.</p>
+
+<p>Now, let me use an example to explain what each blocks does.</p>
+
+<p>Given the following code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>What will happen when I type twenty? Let’s run it and see what we’ll get:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>How old are you? Twenty
+Traceback (most recent call last):
+  File "/tmp/main.py", line 1, in &lt;module&gt;
+    age = int(input("How old are you? "))
+ValueError: invalid literal for int() with base 10: 'Twenty'
+</code></pre></div></div>
+
+<p>This isn’t something we will want our users to see. A better thing is something like <code class="language-plaintext highlighter-rouge">Have no idea what Twenty is.</code>.</p>
+
+<p>Now, to be able to handle an exception, we need to put the code that can raise the exception in a <code class="language-plaintext highlighter-rouge">try</code> block. E.G.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Now, let’s run this code and see what will happen:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  File "/tmp/main.py", line 2
+    age = int(input("How old are you? "))
+SyntaxError: expected 'except' or 'finally' block
+</code></pre></div></div>
+
+<p>A <code class="language-plaintext highlighter-rouge">try</code> block must  have at least one <a href="#except"><code class="language-plaintext highlighter-rouge">except</code></a> or a <a href="#finally"><code class="language-plaintext highlighter-rouge">finally</code></a> block.</p>
+
+<p>This ties to the next section:</p>
+
+<h2 id="except">except</h2>
+
+<p>The most basic form of an <code class="language-plaintext highlighter-rouge">except</code> statement is <code class="language-plaintext highlighter-rouge">except:</code>, for example:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">I think you didn</span><span class="sh">'</span><span class="s">t type a number. Try again!</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Let’s try and recreate the error again.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I think you didn't type a number. Try again!
+</code></pre></div></div>
+
+<p>It worked! And it smells! Let me explain.</p>
+
+<p>The above <code class="language-plaintext highlighter-rouge">except</code> statement doesn’t specify which exception it’s handles. This has the effects of passing all unhandled exceptions to it. Which is something you will not like. Why? some exceptions are meant to be handled differently. For example, when you hit ctrl+c while the above code is waiting for user input, python raises a <code class="language-plaintext highlighter-rouge">KeyboardInterupt</code> exception. This usually signals the user wants to exit the program, so you are supposed to exit the program not print something.</p>
+
+<p>So, how do we specify which exception to handle? by writing it after <code class="language-plaintext highlighter-rouge">except</code>. How do we know which exception to handle? Usually, I allow python to tell me. If you check the error we got in our first example, the last line is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError: invalid literal for int() with base 10: 'Twenty'
+</code></pre></div></div>
+
+<p>The exception to handle in this case is <code class="language-plaintext highlighter-rouge">ValueError</code>.</p>
+
+<p>Let’s handle <code class="language-plaintext highlighter-rouge">ValueError</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+<span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">I think you didn</span><span class="sh">'</span><span class="s">t type a number. Try again!</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Hmmmm, our code has stopped smelling.</p>
+
+<p>The last info for this section is, you can have more than one <code class="language-plaintext highlighter-rouge">except</code> blocks under a <code class="language-plaintext highlighter-rouge">try</code> block. So, you can handle <code class="language-plaintext highlighter-rouge">KeyboardInterupt</code> too if you like.</p>
+
+<h2 id="else">else</h2>
+
+<p>The code in the <code class="language-plaintext highlighter-rouge">else</code> block depends on the code in the <code class="language-plaintext highlighter-rouge">try</code> block to run without an exception. In our case, we can do something with the age variable. E.G.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+<span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">I think you didn</span><span class="sh">'</span><span class="s">t type a number. Try again!</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Now I know you</span><span class="sh">'</span><span class="s">re</span><span class="sh">"</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="sh">"</span><span class="s">years old.</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now, let’s run our code and pass it an appropriate value.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>How old are you? 20
+Now I know you're 20 years old.
+</code></pre></div></div>
+
+<h2 id="finally">finally</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">finally</code> block always executes. In our case, we can print a goodbye to our user.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">How old are you? </span><span class="sh">"</span><span class="p">))</span>
+<span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">I think you didn</span><span class="sh">'</span><span class="s">t type a number. Try again!</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Now I know you</span><span class="sh">'</span><span class="s">re</span><span class="sh">"</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="sh">"</span><span class="s">years old.</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Thank you for sailing with us.</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Let’s try with an appropriate input:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>How old are you? 20
+Now I know you're 20 years old.
+Thank you for sailing with us.
+</code></pre></div></div>
+
+<p>OK… Let’s give it <em>Twenty</em> now:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>How old are you? Twenty
+I think you didn't type a number. Try again!
+Thank you for sailing with us.
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This is an introduction to exception handling in python. Lots of things has been ignored intensionally.</p>
+
+  </div><a class="u-url" href="/blog/python/2023/11/26/disassembling-exception-handling-in-python.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Abdulqadir Ahmad</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Abdulqadir Ahmad</li><li><a class="u-email" href="mailto:arfs6.mail@gmail.com">arfs6.mail@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/arfs6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">arfs6</span></a></li><li><a href="https://hachyderm.io/@arfs6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">arfs6</span></a></li><li><a href="https://www.twitter.com/arf_s6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">arf_s6</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Abdulqadir Ahmad&#39;s website. Where you can read his blogs, and get to know his projects.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
