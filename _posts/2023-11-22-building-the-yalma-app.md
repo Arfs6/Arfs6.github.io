@@ -58,6 +58,47 @@ What is the URL (link) of the link? https://arfs6.me
 {'name': "Abdulqadir Ahmad's website", 'url': 'https://arfs6.me'}
 ```
 
+### Step 3 - Showing links
+
+Now that we have a function that creates a link, let's create a function that displays all our links.
+
+1. Create a function `display_links` that has one parameter, `links` => `def display_links(links)`:
+    - If the list of links passed is empty, display `No links yet.` to the user.
+    - If the list has some elements in it, loop through all the elements and print it in a nice way. Each element is a dictionary created with the `create_link` function.  
+
+        E.G.  
+
+        `1. Name: <name_of_link>`
+
+        `	Link: \<url_of_link>`
+    
+        Where `1` is the number of the link, `<name_of_link>` is the name of the link and `<url_of_link>` is the url of the link.  
+2. For testing:  
+    - Delete the testing line of **step 2** that calls `create_link`.
+    - Create an empty list and store it in a variable `links`.
+    - Call `display_links` and pass it `links` created above.
+    - Call `create_link` and append what it returns to your `links` list created above.
+    - Call `display_links` from above and pass it the `links` variable.
+    - Repeate the above two instructions.
+
+#### Example
+
+```
+	YALMA
+A link manager.
+No links yet.
+What is the name of the link? Abdulqadir Ahmad's website
+What is the URL (link) of the link? https://arfs6.me
+1. Name: Abdulqadir Ahmad's website
+	Link: https://arfs6.me
+What is the name of the link? Chat GPT
+What is the URL (link) of the link? https://chat.openai.com
+1. Name: Abdulqadir Ahmad's website
+	Link: https://arfs6.me
+2. Name: Chat GPT
+	Link: https://chat.openai.com
+```
+
 ## Have Feedback / Questions?
 
 If you no where to get me, **do not hesitate** to contact me. If you don't, there are useful links at the bottom of this page.
