@@ -109,6 +109,56 @@ What is the URL (link) of the link? https://arfs6.me
 {'name': "Abdulqadir Ahmad's website", 'url': 'https://arfs6.me'}
 </code></pre></div></div>
 
+<h3 id="step-3---showing-links">Step 3 - Showing links</h3>
+
+<p>Now that we have a function that creates a link, let’s create a function that displays all our links.</p>
+
+<ol>
+  <li>Create a function <code class="language-plaintext highlighter-rouge">display_links</code> that has one parameter, <code class="language-plaintext highlighter-rouge">links</code> =&gt; <code class="language-plaintext highlighter-rouge">def display_links(links)</code>:
+    <ul>
+      <li>If the list of links passed is empty, display <code class="language-plaintext highlighter-rouge">No links yet.</code> to the user.</li>
+      <li>
+        <p>If the list has some elements in it, loop through all the elements and print it in a nice way. Each element is a dictionary created with the <code class="language-plaintext highlighter-rouge">create_link</code> function.</p>
+
+        <p>E.G.</p>
+
+        <p><code class="language-plaintext highlighter-rouge">1. Name: &lt;name_of_link&gt;</code></p>
+
+        <p>`	Link: &lt;url_of_link&gt;`</p>
+
+        <p>Where <code class="language-plaintext highlighter-rouge">1</code> is the number of the link, <code class="language-plaintext highlighter-rouge">&lt;name_of_link&gt;</code> is the name of the link and <code class="language-plaintext highlighter-rouge">&lt;url_of_link&gt;</code> is the url of the link.</p>
+      </li>
+    </ul>
+  </li>
+  <li>For testing:
+    <ul>
+      <li>Delete the testing line of <strong>step 2</strong> that calls <code class="language-plaintext highlighter-rouge">create_link</code>.</li>
+      <li>Create an empty list and store it in a variable <code class="language-plaintext highlighter-rouge">links</code>.</li>
+      <li>Call <code class="language-plaintext highlighter-rouge">display_links</code> and pass it <code class="language-plaintext highlighter-rouge">links</code> created above.</li>
+      <li>Call <code class="language-plaintext highlighter-rouge">create_link</code> and append what it returns to your <code class="language-plaintext highlighter-rouge">links</code> list created above.</li>
+      <li>Call <code class="language-plaintext highlighter-rouge">display_links</code> from above and pass it the <code class="language-plaintext highlighter-rouge">links</code> variable.</li>
+      <li>Repeate the above two instructions.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="example-2">Example</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	YALMA
+A link manager.
+No links yet.
+What is the name of the link? Abdulqadir Ahmad's website
+What is the URL (link) of the link? https://arfs6.me
+1. Name: Abdulqadir Ahmad's website
+	Link: https://arfs6.me
+What is the name of the link? Chat GPT
+What is the URL (link) of the link? https://chat.openai.com
+1. Name: Abdulqadir Ahmad's website
+	Link: https://arfs6.me
+2. Name: Chat GPT
+	Link: https://chat.openai.com
+</code></pre></div></div>
+
 <h2 id="have-feedback--questions">Have Feedback / Questions?</h2>
 
 <p>If you no where to get me, <strong>do not hesitate</strong> to contact me. If you don’t, there are useful links at the bottom of this page.</p>

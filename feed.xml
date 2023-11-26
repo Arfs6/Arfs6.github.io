@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-24T08:34:59+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Why I started programming</title><link href="https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming.html" rel="alternate" type="text/html" title="Why I started programming" /><published>2023-11-24T07:55:00+00:00</published><updated>2023-11-24T07:55:00+00:00</updated><id>https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming</id><content type="html" xml:base="https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming.html"><![CDATA[<p>I started learning python February 2022 using an awesome book - Python Crash Course. Why? I couldn’t read financial chart, candle stick charts to be specific. This is how it looks like: <a href="https://commons.wikimedia.org/wiki/File:Candlestick_Chart_in_MetaTrader_5.png#/media/File:Candlestick_Chart_in_MetaTrader_5.png">https://commons.wikimedia.org/wiki/File:Candlestick_Chart_in_MetaTrader_5.png#/media/File:Candlestick_Chart_in_MetaTrader_5.png</a>. In case you don’t know, I am blind.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-26T06:34:14+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Why I started programming</title><link href="https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming.html" rel="alternate" type="text/html" title="Why I started programming" /><published>2023-11-24T07:55:00+00:00</published><updated>2023-11-24T07:55:00+00:00</updated><id>https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming</id><content type="html" xml:base="https://arfs6.me/blog/programming/2023/11/24/why-i-started-programming.html"><![CDATA[<p>I started learning python February 2022 using an awesome book - Python Crash Course. Why? I couldn’t read financial chart, candle stick charts to be specific. This is how it looks like: <a href="https://commons.wikimedia.org/wiki/File:Candlestick_Chart_in_MetaTrader_5.png#/media/File:Candlestick_Chart_in_MetaTrader_5.png">https://commons.wikimedia.org/wiki/File:Candlestick_Chart_in_MetaTrader_5.png#/media/File:Candlestick_Chart_in_MetaTrader_5.png</a>. In case you don’t know, I am blind.</p>
 
 <p>Why python? Because I have seen some solutions build in python, and I heard you can build almost anything in python.</p>
 
@@ -61,6 +61,56 @@ A link manager.
 What is the name of the link? Abdulqadir Ahmad's website
 What is the URL (link) of the link? https://arfs6.me
 {'name': "Abdulqadir Ahmad's website", 'url': 'https://arfs6.me'}
+</code></pre></div></div>
+
+<h3 id="step-3---showing-links">Step 3 - Showing links</h3>
+
+<p>Now that we have a function that creates a link, let’s create a function that displays all our links.</p>
+
+<ol>
+  <li>Create a function <code class="language-plaintext highlighter-rouge">display_links</code> that has one parameter, <code class="language-plaintext highlighter-rouge">links</code> =&gt; <code class="language-plaintext highlighter-rouge">def display_links(links)</code>:
+    <ul>
+      <li>If the list of links passed is empty, display <code class="language-plaintext highlighter-rouge">No links yet.</code> to the user.</li>
+      <li>
+        <p>If the list has some elements in it, loop through all the elements and print it in a nice way. Each element is a dictionary created with the <code class="language-plaintext highlighter-rouge">create_link</code> function.</p>
+
+        <p>E.G.</p>
+
+        <p><code class="language-plaintext highlighter-rouge">1. Name: &lt;name_of_link&gt;</code></p>
+
+        <p>`	Link: &lt;url_of_link&gt;`</p>
+
+        <p>Where <code class="language-plaintext highlighter-rouge">1</code> is the number of the link, <code class="language-plaintext highlighter-rouge">&lt;name_of_link&gt;</code> is the name of the link and <code class="language-plaintext highlighter-rouge">&lt;url_of_link&gt;</code> is the url of the link.</p>
+      </li>
+    </ul>
+  </li>
+  <li>For testing:
+    <ul>
+      <li>Delete the testing line of <strong>step 2</strong> that calls <code class="language-plaintext highlighter-rouge">create_link</code>.</li>
+      <li>Create an empty list and store it in a variable <code class="language-plaintext highlighter-rouge">links</code>.</li>
+      <li>Call <code class="language-plaintext highlighter-rouge">display_links</code> and pass it <code class="language-plaintext highlighter-rouge">links</code> created above.</li>
+      <li>Call <code class="language-plaintext highlighter-rouge">create_link</code> and append what it returns to your <code class="language-plaintext highlighter-rouge">links</code> list created above.</li>
+      <li>Call <code class="language-plaintext highlighter-rouge">display_links</code> from above and pass it the <code class="language-plaintext highlighter-rouge">links</code> variable.</li>
+      <li>Repeate the above two instructions.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="example-2">Example</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	YALMA
+A link manager.
+No links yet.
+What is the name of the link? Abdulqadir Ahmad's website
+What is the URL (link) of the link? https://arfs6.me
+1. Name: Abdulqadir Ahmad's website
+	Link: https://arfs6.me
+What is the name of the link? Chat GPT
+What is the URL (link) of the link? https://chat.openai.com
+1. Name: Abdulqadir Ahmad's website
+	Link: https://arfs6.me
+2. Name: Chat GPT
+	Link: https://chat.openai.com
 </code></pre></div></div>
 
 <h2 id="have-feedback--questions">Have Feedback / Questions?</h2>
