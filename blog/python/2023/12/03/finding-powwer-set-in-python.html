@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Finding the power set of a set using python | Abdulqadir Ahmad</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Finding the power set of a set using python" />
+<meta name="author" content="Abdulqadir Ahmad" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My friend and I were solving some math questions and we had to find the power set of a set with 14 elements" />
+<meta property="og:description" content="My friend and I were solving some math questions and we had to find the power set of a set with 14 elements" />
+<link rel="canonical" href="https://arfs6.me/blog/python/2023/12/03/finding-powwer-set-in-python.html" />
+<meta property="og:url" content="https://arfs6.me/blog/python/2023/12/03/finding-powwer-set-in-python.html" />
+<meta property="og:site_name" content="Abdulqadir Ahmad" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-12-03T16:21:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Finding the power set of a set using python" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Abdulqadir Ahmad"},"dateModified":"2023-12-03T16:21:00+00:00","datePublished":"2023-12-03T16:21:00+00:00","description":"My friend and I were solving some math questions and we had to find the power set of a set with 14 elements","headline":"Finding the power set of a set using python","mainEntityOfPage":{"@type":"WebPage","@id":"https://arfs6.me/blog/python/2023/12/03/finding-powwer-set-in-python.html"},"url":"https://arfs6.me/blog/python/2023/12/03/finding-powwer-set-in-python.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://arfs6.me/feed.xml" title="Abdulqadir Ahmad" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Abdulqadir Ahmad</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/blog/">Blog</a><a class="page-link" href="/contact/index.html">Contact Me</a><a class="page-link" href="/projects/index.html">Projects</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Finding the power set of a set using python</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-12-03T16:21:00+00:00" itemprop="datePublished">Dec 3, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>My friend and I were solving some math questions and we had to find the power set of a set with 14 elements. According to <a href="https://en.wikipedia.org/wiki/Power_set">wikipedia</a>, the power set of a set S is the set of all subsets of S, including the empty set and S itself.</p>
+
+<p>Now, to find the number of elements (I.E. subsets) in the power set, we find 2 to the nth power, where n is the number of elements in the main set. Since our set has 14 elements, she decided to calculate 2 to the nth power manually. It took her a reasonable amount of time to calculate just the number of elements, which is 16384.</p>
+
+<p>At that point, I knew this is no work for a human, and my brain began to figure out how to write it in python. This blog post is me sharing my solution with you.</p>
+
+<h2 id="the-solution">The Solution</h2>
+
+<p>While I was learning set, chat GPT told me something about using bits to find all the possible subsets of a set. At the time, it flew over my head, but after my brain decided to solve this problem, it remembered it. I think it will be better explaining it with an example.</p>
+
+<h3 id="example">Example</h3>
+
+<p>Given a set {1, 2, 3}, let’s find the power set. The number of elements in our power set is going to be 8.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Binary</th>
+      <th>Decimal</th>
+      <th>Elements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>001</td>
+      <td>1</td>
+      <td>{3}</td>
+    </tr>
+    <tr>
+      <td>010</td>
+      <td>2</td>
+      <td>{2}</td>
+    </tr>
+    <tr>
+      <td>011</td>
+      <td>3</td>
+      <td>{2, 3}</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>4</td>
+      <td>{1}</td>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td>5</td>
+      <td>{1, 3}</td>
+    </tr>
+    <tr>
+      <td>110</td>
+      <td>6</td>
+      <td>{1, 2}</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>7</td>
+      <td>{1, 2, 3}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>From the definition given above, it’s only the empty set that hasn’t been added. Adding it will result to a total of 8 elements. Although the order of the elements aren’t “sequential”, all the elements have been included.</p>
+
+<h3 id="explanation">Explanation</h3>
+
+<p>We start by finding the number of elements in the power set, which in our case is 8.</p>
+
+<p>Next, we write down 1 to 1 - <em>number of elements in power set</em> in binary.</p>
+
+<p>Then add zeros to the beginning of all your binary digits (bits) so that they will have equal number of bits. In our case, the largest number had three bits, so we added bits at the beginning of all the other numbers to make it three bits.</p>
+
+<p>For each number, represent each element of your main set with a position in your binary numbers. If the bit corresponding to the number is on (1), add the element to your subset. In our case, 1 was represented by the first bit, 2 by the second bit and 3 by the third bit. For example, our first binary number is <em>001</em>. Only the third bit is on, so we only added <em>3</em>.</p>
+
+<p>From here, the only missing element in your power set is the empty set. So, add it!</p>
+
+<p>Now, let’s figure out how to do this in</p>
+
+<h2 id="python">python.</h2>
+
+<p>The parts worth mentioning in the python script are <a href="https://www.geeksforgeeks.org/python-bitwise-operators/">bit wise operators</a> and <a href="https://www.geeksforgeeks.org/generators-in-python/">generators</a>.</p>
+
+<p>I used two bit manipulation operators, <code class="language-plaintext highlighter-rouge">&amp;</code> and <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code> [<code class="language-plaintext highlighter-rouge">bitwise and</code>]: I used this to check if the last bit is enabled. By matching it with 1, which has all bit off except the last bit, I’ll get 1 only when the last bit is on.</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> [<code class="language-plaintext highlighter-rouge">bitwise right shift</code>]: I used this to remove the bit I inspected using <code class="language-plaintext highlighter-rouge">&amp;</code>.</li>
+</ul>
+
+<p>As for the generators, I used it to get all the position of the enabled bits in the current number.</p>
+
+<p>Enough english,</p>
+
+<h3 id="here-is-the-python-code">here is the python code:</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+</span>
+
+<span class="k">def</span> <span class="nf">_getPositions</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">A generator that returns the position of all enabled bits.</span><span class="sh">"""</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">num</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">idx</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+        <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">getPowerSet</span><span class="p">(</span><span class="n">mainSet</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Find the power set of @mainSet
+    parameters:
+    - mainSet: A list containing all the elements of the set to find it</span><span class="sh">'</span><span class="s">s power set
+    Returns:
+    - None: Invalid argument
+    - list: A list containing all the possible subsets of @mainSet. The subsets are sets.
+    </span><span class="sh">"""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">mainSet</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="n">powerSet</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="nb">max</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span> <span class="nf">len</span><span class="p">(</span><span class="n">mainSet</span><span class="p">)</span>
+    <span class="n">powerSet</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">set</span><span class="p">())</span>  <span class="c1"># Empty set
+</span>    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">):</span>
+        <span class="n">subSet</span> <span class="o">=</span> <span class="nf">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nf">_getPositions</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+            <span class="n">subSet</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">mainSet</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+        <span class="n">powerSet</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">subSet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">powerSet</span>
+
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="sh">"""</span><span class="s">Begin code execution</span><span class="sh">"""</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Hi. I am here to find the power set of set for you.</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">rawSet</span> <span class="o">=</span> <span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">Type the elements of your set, separated by comma (,): </span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">rawSet</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">No set supplied, exiting...</span><span class="sh">"</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">mainSet</span> <span class="o">=</span> <span class="p">[</span><span class="nf">int</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="nf">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">rawSet</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">"</span><span class="s">,</span><span class="sh">"</span><span class="p">)]</span>
+    <span class="n">powerSet</span> <span class="o">=</span> <span class="nf">getPowerSet</span><span class="p">(</span><span class="n">mainSet</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">powerSet</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Total number of sets:</span><span class="sh">"</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">powerSet</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="nf">run</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="finding-the-power-set">Finding the power set</h2>
+
+<p>After finishing the code, we ran it and passed the set with 14 values. It took some seconds before all the output was displayed, and it was over 2000 lines. Should I show you? Okay, I have uploaded the output to a gist, and here is the link: &lt;&gt;</p>
+
+  </div><a class="u-url" href="/blog/python/2023/12/03/finding-powwer-set-in-python.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Abdulqadir Ahmad</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Abdulqadir Ahmad</li><li><a class="u-email" href="mailto:arfs6.mail@gmail.com">arfs6.mail@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/arfs6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">arfs6</span></a></li><li><a href="https://hachyderm.io/@arfs6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">arfs6</span></a></li><li><a href="https://www.twitter.com/arf_s6"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">arf_s6</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Abdulqadir Ahmad&#39;s website. Where you can read his blogs, and get to know his projects.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

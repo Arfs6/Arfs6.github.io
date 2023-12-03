@@ -1,4 +1,154 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-11-26T20:38:07+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Disassembling exception handling in python</title><link href="https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python.html" rel="alternate" type="text/html" title="Disassembling exception handling in python" /><published>2023-11-26T14:00:00+00:00</published><updated>2023-11-26T14:00:00+00:00</updated><id>https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python.html"><![CDATA[<p>If you have written some code in python, then you have most probably met an exception. Exceptions occurs when an operation fails. Example, converting <em>one</em> to an integer.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-12-03T16:49:25+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad&apos;s website. Where you can read his blogs, and get to know his projects.</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">Finding the power set of a set using python</title><link href="https://arfs6.me/blog/python/2023/12/03/finding-powwer-set-in-python.html" rel="alternate" type="text/html" title="Finding the power set of a set using python" /><published>2023-12-03T16:21:00+00:00</published><updated>2023-12-03T16:21:00+00:00</updated><id>https://arfs6.me/blog/python/2023/12/03/finding-powwer-set-in-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/12/03/finding-powwer-set-in-python.html"><![CDATA[<p>My friend and I were solving some math questions and we had to find the power set of a set with 14 elements. According to <a href="https://en.wikipedia.org/wiki/Power_set">wikipedia</a>, the power set of a set S is the set of all subsets of S, including the empty set and S itself.</p>
+
+<p>Now, to find the number of elements (I.E. subsets) in the power set, we find 2 to the nth power, where n is the number of elements in the main set. Since our set has 14 elements, she decided to calculate 2 to the nth power manually. It took her a reasonable amount of time to calculate just the number of elements, which is 16384.</p>
+
+<p>At that point, I knew this is no work for a human, and my brain began to figure out how to write it in python. This blog post is me sharing my solution with you.</p>
+
+<h2 id="the-solution">The Solution</h2>
+
+<p>While I was learning set, chat GPT told me something about using bits to find all the possible subsets of a set. At the time, it flew over my head, but after my brain decided to solve this problem, it remembered it. I think it will be better explaining it with an example.</p>
+
+<h3 id="example">Example</h3>
+
+<p>Given a set {1, 2, 3}, let’s find the power set. The number of elements in our power set is going to be 8.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Binary</th>
+      <th>Decimal</th>
+      <th>Elements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>001</td>
+      <td>1</td>
+      <td>{3}</td>
+    </tr>
+    <tr>
+      <td>010</td>
+      <td>2</td>
+      <td>{2}</td>
+    </tr>
+    <tr>
+      <td>011</td>
+      <td>3</td>
+      <td>{2, 3}</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>4</td>
+      <td>{1}</td>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td>5</td>
+      <td>{1, 3}</td>
+    </tr>
+    <tr>
+      <td>110</td>
+      <td>6</td>
+      <td>{1, 2}</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>7</td>
+      <td>{1, 2, 3}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>From the definition given above, it’s only the empty set that hasn’t been added. Adding it will result to a total of 8 elements. Although the order of the elements aren’t “sequential”, all the elements have been included.</p>
+
+<h3 id="explanation">Explanation</h3>
+
+<p>We start by finding the number of elements in the power set, which in our case is 8.</p>
+
+<p>Next, we write down 1 to 1 - <em>number of elements in power set</em> in binary.</p>
+
+<p>Then add zeros to the beginning of all your binary digits (bits) so that they will have equal number of bits. In our case, the largest number had three bits, so we added bits at the beginning of all the other numbers to make it three bits.</p>
+
+<p>For each number, represent each element of your main set with a position in your binary numbers. If the bit corresponding to the number is on (1), add the element to your subset. In our case, 1 was represented by the first bit, 2 by the second bit and 3 by the third bit. For example, our first binary number is <em>001</em>. Only the third bit is on, so we only added <em>3</em>.</p>
+
+<p>From here, the only missing element in your power set is the empty set. So, add it!</p>
+
+<p>Now, let’s figure out how to do this in</p>
+
+<h2 id="python">python.</h2>
+
+<p>The parts worth mentioning in the python script are <a href="https://www.geeksforgeeks.org/python-bitwise-operators/">bit wise operators</a> and <a href="https://www.geeksforgeeks.org/generators-in-python/">generators</a>.</p>
+
+<p>I used two bit manipulation operators, <code class="language-plaintext highlighter-rouge">&amp;</code> and <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code> [<code class="language-plaintext highlighter-rouge">bitwise and</code>]: I used this to check if the last bit is enabled. By matching it with 1, which has all bit off except the last bit, I’ll get 1 only when the last bit is on.</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> [<code class="language-plaintext highlighter-rouge">bitwise right shift</code>]: I used this to remove the bit I inspected using <code class="language-plaintext highlighter-rouge">&amp;</code>.</li>
+</ul>
+
+<p>As for the generators, I used it to get all the position of the enabled bits in the current number.</p>
+
+<p>Enough english,</p>
+
+<h3 id="here-is-the-python-code">here is the python code:</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+</span>
+
+<span class="k">def</span> <span class="nf">_getPositions</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">A generator that returns the position of all enabled bits.</span><span class="sh">"""</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">num</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">idx</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+        <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">getPowerSet</span><span class="p">(</span><span class="n">mainSet</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Find the power set of @mainSet
+    parameters:
+    - mainSet: A list containing all the elements of the set to find it</span><span class="sh">'</span><span class="s">s power set
+    Returns:
+    - None: Invalid argument
+    - list: A list containing all the possible subsets of @mainSet. The subsets are sets.
+    </span><span class="sh">"""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">mainSet</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="n">powerSet</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="nb">max</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span> <span class="nf">len</span><span class="p">(</span><span class="n">mainSet</span><span class="p">)</span>
+    <span class="n">powerSet</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">set</span><span class="p">())</span>  <span class="c1"># Empty set
+</span>    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">):</span>
+        <span class="n">subSet</span> <span class="o">=</span> <span class="nf">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nf">_getPositions</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+            <span class="n">subSet</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">mainSet</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+        <span class="n">powerSet</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">subSet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">powerSet</span>
+
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="sh">"""</span><span class="s">Begin code execution</span><span class="sh">"""</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Hi. I am here to find the power set of set for you.</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">rawSet</span> <span class="o">=</span> <span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">Type the elements of your set, separated by comma (,): </span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">rawSet</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">No set supplied, exiting...</span><span class="sh">"</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">mainSet</span> <span class="o">=</span> <span class="p">[</span><span class="nf">int</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="nf">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">rawSet</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">"</span><span class="s">,</span><span class="sh">"</span><span class="p">)]</span>
+    <span class="n">powerSet</span> <span class="o">=</span> <span class="nf">getPowerSet</span><span class="p">(</span><span class="n">mainSet</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">powerSet</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Total number of sets:</span><span class="sh">"</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">powerSet</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="nf">run</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="finding-the-power-set">Finding the power set</h2>
+
+<p>After finishing the code, we ran it and passed the set with 14 values. It took some seconds before all the output was displayed, and it was over 2000 lines. Should I show you? Okay, I have uploaded the output to a gist, and here is the link: &lt;&gt;</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><summary type="html"><![CDATA[My friend and I were solving some math questions and we had to find the power set of a set with 14 elements]]></summary></entry><entry><title type="html">Disassembling exception handling in python</title><link href="https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python.html" rel="alternate" type="text/html" title="Disassembling exception handling in python" /><published>2023-11-26T14:00:00+00:00</published><updated>2023-11-26T14:00:00+00:00</updated><id>https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/11/26/disassembling-exception-handling-in-python.html"><![CDATA[<p>If you have written some code in python, then you have most probably met an exception. Exceptions occurs when an operation fails. Example, converting <em>one</em> to an integer.</p>
 
 <p>When an exception is raised and it isn’t handled, python displays an error to the console and exits the program. As a user, I wouldn’t want an app to crash just because I supplied the wrong input. This is where exception handling comes.</p>
 
@@ -560,47 +710,4 @@ What is the URL (link) of the link? https://chat.openai.com
 
 <p>Looks like python is been too smart here. Just do what I asked you, nothing more, nothing less!</p>
 
-<p>At this point, I don’t know what to do. I don’t want to resolve to string manipulation for paths.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><category term="python," /><category term="os-module" /><summary type="html"><![CDATA[>>> os.path.join('/home/arfs6', '/proj') # Expecting /home/arfs6/proj]]></summary></entry><entry><title type="html">Did you know? ufw is a python script.</title><link href="https://arfs6.me/blog/python/2023/10/19/ufw-python.html" rel="alternate" type="text/html" title="Did you know? ufw is a python script." /><published>2023-10-19T19:33:00+00:00</published><updated>2023-10-19T19:33:00+00:00</updated><id>https://arfs6.me/blog/python/2023/10/19/ufw-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/10/19/ufw-python.html"><![CDATA[<p>Out of curiosity, I wanted to know what ufw (uncomplicated Firewall) was made up of. So, I looked for it:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>which ufw
-/usr/sbin/ufw
-</code></pre></div></div>
-
-<p>Yours might be somewhere else. I then paid the directory a visit and checked what the file was made up of:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /usr/sbin
-<span class="nv">$ </span>file ufw
-ufw: Python script, ASCII text executable
-</code></pre></div></div>
-
-<p>I then opened it with vim, but since I can open it here, let me show you some part of it:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">head </span>ufw
-<span class="c">#! /usr/bin/python3</span>
-<span class="c">#</span>
-<span class="c"># ufw: front-end for Linux firewalling (cli)</span>
-<span class="c">#</span>
-<span class="c"># Copyright 2008-2021 Canonical Ltd.</span>
-<span class="c">#</span>
-<span class="c">#    This program is free software: you can redistribute it and/or modify</span>
-<span class="c">#    it under the terms of the GNU General Public License version 3,</span>
-<span class="c">#    as published by the Free Software Foundation.</span>
-<span class="c">#</span>
-<span class="nv">$ </span><span class="nb">grep</span> <span class="s1">'import'</span> ufw
-from __future__ import print_function
-import os
-import sys
-import warnings
-import ufw.frontend
-from ufw.common import UFWError
-from ufw.util import error, warn, msg, _findpath, create_lock, release_lock
-import gettext
-</code></pre></div></div>
-
-<p>The first command <code class="language-plaintext highlighter-rouge">head</code> prints the first ten lines of the file, while the second command <code class="language-plaintext highlighter-rouge">grep</code> prints all the lines that contain <code class="language-plaintext highlighter-rouge">import</code> in it.</p>
-
-<p>So, it turns out, ufw is “just” a python script bundled with a package that lives somewhere in <code class="language-plaintext highlighter-rouge">sys.path</code>.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>So, I wonder, which other tools I use regularly are also python scripts?</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><category term="python," /><category term="ufw" /><summary type="html"><![CDATA[I wonder which tool I am using also runs on python]]></summary></entry></feed>
+<p>At this point, I don’t know what to do. I don’t want to resolve to string manipulation for paths.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><category term="python," /><category term="os-module" /><summary type="html"><![CDATA[>>> os.path.join('/home/arfs6', '/proj') # Expecting /home/arfs6/proj]]></summary></entry></feed>
