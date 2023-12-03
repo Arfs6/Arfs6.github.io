@@ -117,4 +117,4 @@ if __name__ == '__main__':
 
 ## Finding the power set
 
-After finishing the code, we ran it and passed the set with 14 values. It took some seconds before all the output was displayed, and it was over 2000 lines. Should I show you? Okay, I have uploaded the output to a gist, and here is the link: <>
+After finishing the code, we ran it and passed the set with 14 values. It took some seconds before all the output was displayed, and it was over 2000 lines. Should I show you? Okay, I have uploaded the output to a gist, and here is the link: <https://gist.github.com/Arfs6/1efafc44fa97f0ec6ecfb7697ba37504>
