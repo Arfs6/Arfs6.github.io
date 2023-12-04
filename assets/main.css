@@ -13,8 +13,8 @@ dl, dd, ol, ul, figure {
  */
 body {
   font: 400 18px/1.5 Poppins, "Segoe UI", Arial;
-  color: #ebf4fa;
-  background-color: #f0f5fa;
+  color: #f0f5fa;
+  background-color: #ebf4fa;
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
@@ -92,7 +92,7 @@ a:visited {
   color: #1756a9;
 }
 a:hover {
-  color: #ebf4fa;
+  color: #f0f5fa;
   text-decoration: underline;
 }
 .social-media-list a:hover {
@@ -246,7 +246,7 @@ table td {
   display: none;
 }
 .site-nav .page-link {
-  color: #ebf4fa;
+  color: #f0f5fa;
   line-height: 1.5;
 }
 .site-nav .page-link:not(:last-child) {
@@ -257,7 +257,7 @@ table td {
     position: absolute;
     top: 9px;
     right: 15px;
-    background-color: #f0f5fa;
+    background-color: #ebf4fa;
     border: 1px solid #e8e8e8;
     border-radius: 5px;
     text-align: right;
