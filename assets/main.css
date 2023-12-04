@@ -13,7 +13,7 @@ dl, dd, ol, ul, figure {
  */
 body {
   font: 400 18px/1.5 Poppins, "Segoe UI", Arial;
-  color: #111;
+  color: #ebf4fa;
   background-color: #f0f5fa;
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
@@ -92,7 +92,7 @@ a:visited {
   color: #1756a9;
 }
 a:hover {
-  color: #111;
+  color: #ebf4fa;
   text-decoration: underline;
 }
 .social-media-list a:hover {
@@ -194,7 +194,7 @@ table {
   margin-bottom: 30px;
   width: 100%;
   text-align: left;
-  color: #3f3f3f;
+  color: white;
   border-collapse: collapse;
   border: 1px solid #e8e8e8;
 }
@@ -246,7 +246,7 @@ table td {
   display: none;
 }
 .site-nav .page-link {
-  color: #111;
+  color: #ebf4fa;
   line-height: 1.5;
 }
 .site-nav .page-link:not(:last-child) {
