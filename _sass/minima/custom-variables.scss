@@ -1,10 +1,16 @@
 $base-font-family: Poppins, "Segoe UI", Arial;
 $content-font-family: Alegreya, Georgia, "Times New Roman";
 $dark-blue-color: #001f3f;
-$text-color: #f0f8ff;
 $base-font-size: 18px;
 $dark-red-color: #8B0000;
 $light-brown-color: #D2B48C;
 $dark-pink-color: #c71585;
 $dark-purple-color: #2C001E;
-$background-color: $dark-purple-color;
+$purple-color: purple;
+$dark-teal-color: #008b8b;
+$turquoise-color: #40E0D0;
+$teal-color: #008080;
+$silver-color: silver;
+$background-color: darken($turquoise-color, 40%);
+$alternate-background-color: darken($turquoise-color, 53%);
+$text-color: lighten($turquoise-color, 20%);

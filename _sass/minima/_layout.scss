@@ -12,7 +12,7 @@
 
 .site-title {
   @include relative-font-size(1.625);
-  font-weight: 300;
+  font-weight: 700;
   line-height: $base-line-height * $base-font-size * 2.25;
   letter-spacing: -1px;
   margin-bottom: 0;
@@ -20,7 +20,7 @@
 
   &,
   &:visited {
-    color: $light-brown-color;
+    color: $silver-color;
   }
 }
 
@@ -177,8 +177,13 @@
  */
 .page-content {
 	font-family: $content-font-family;
-  padding: $spacing-unit 0;
-  flex: 1;
+	padding: $spacing-unit 0;
+	flex: 1;
+	.wrapper {
+		width: 80%;
+		background-color: $alternate-background-color;
+		box-shadow: 1.1rem 1.1rem 1.1rem $background-color;
+	}
 }
 
 .page-heading {
@@ -247,11 +252,20 @@
     }
   }
 
-  h4 {
+  h4 
     @include relative-font-size(1.25);
 
     @include media-query($on-laptop) {
       @include relative-font-size(1.125);
     }
   }
+}
+
+
+
+/**
+* Rss subscribe
+*/
+.rss-subscribe {
+	color: red;
 }

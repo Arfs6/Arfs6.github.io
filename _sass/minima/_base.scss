@@ -17,6 +17,7 @@ body {
   font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
   color: $text-color;
   background-color: $background-color;
+  background: repeating-linear-gradient(to right, $background-color, $background-color 3px, $alternate-background-color 3px, $alternate-background-color 13px);
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
      -moz-font-feature-settings: "kern" 1;
@@ -107,7 +108,7 @@ a {
   text-decoration: none;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    color: $purple-color;
   }
 
   &:hover {
