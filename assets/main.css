@@ -13,8 +13,9 @@ dl, dd, ol, ul, figure {
  */
 body {
   font: 400 18px/1.5 Poppins, "Segoe UI", Arial;
-  color: #f0f8ff;
-  background-color: #2C001E;
+  color: #98eee6;
+  background-color: #0c4842;
+  background: repeating-linear-gradient(to right, #0c4842, #0c4842 3px, #020f0e 3px, #020f0e 13px);
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
@@ -89,10 +90,10 @@ a {
   text-decoration: none;
 }
 a:visited {
-  color: #1756a9;
+  color: purple;
 }
 a:hover {
-  color: #f0f8ff;
+  color: #98eee6;
   text-decoration: underline;
 }
 .social-media-list a:hover {
@@ -198,15 +199,15 @@ table {
   border: 1px solid #e8e8e8;
 }
 table tr:nth-child(even) {
-  background-color: #f0f8ff;
-  color: #2C001E;
+  background-color: #98eee6;
+  color: #0c4842;
 }
 table th, table td {
   padding: 10px 15px;
 }
 table th {
-  color: #2C001E;
-  background-color: #f0f8ff;
+  color: #0c4842;
+  background-color: #98eee6;
   border: 1px solid #dedede;
   border-bottom-color: #c9c9c9;
 }
@@ -226,14 +227,14 @@ table td {
 
 .site-title {
   font-size: 29.25px;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 60.75px;
   letter-spacing: -1px;
   margin-bottom: 0;
   float: left;
 }
 .site-title, .site-title:visited {
-  color: #D2B48C;
+  color: silver;
 }
 
 .site-nav {
@@ -247,7 +248,7 @@ table td {
   display: none;
 }
 .site-nav .page-link {
-  color: #f0f8ff;
+  color: #98eee6;
   line-height: 1.5;
 }
 .site-nav .page-link:not(:last-child) {
@@ -258,7 +259,7 @@ table td {
     position: absolute;
     top: 9px;
     right: 15px;
-    background-color: #2C001E;
+    background-color: #0c4842;
     border: 1px solid #e8e8e8;
     border-radius: 5px;
     text-align: right;
@@ -373,6 +374,11 @@ table td {
   padding: 30px 0;
   flex: 1;
 }
+.page-content .wrapper {
+  width: 80%;
+  background-color: #020f0e;
+  box-shadow: 1.1rem 1.1rem 1.1rem #0c4842;
+}
 
 .page-heading {
   font-size: 36px;
@@ -445,6 +451,13 @@ table td {
   .post-content h4 {
     font-size: 20.25px;
   }
+}
+
+/**
+* Rss subscribe
+*/
+.rss-subscribe {
+  color: red;
 }
 
 /**
