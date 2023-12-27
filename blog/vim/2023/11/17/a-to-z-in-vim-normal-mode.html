@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>A To Z In Vim | Abdulqadir Ahmad</title>
-<meta name="generator" content="Jekyll v4.3.2" />
+<meta name="generator" content="Jekyll v4.3.3" />
 <meta property="og:title" content="A To Z In Vim" />
 <meta name="author" content="Abdulqadir Ahmad" />
 <meta property="og:locale" content="en_US" />
@@ -68,7 +68,11 @@
   <li><strong>a</strong>: Switch to insert mode with cursor after the currently focused character.</li>
   <li><strong>s</strong>: Delete the current character and switch to insert mode.</li>
   <li><strong>d</strong>: Delete. Must pass text object or motion to delete.</li>
-  <li><strong>f</strong>: Go to the previous occurrence of a character. Must type character after command.</li>
+  <li><strong>f</strong>: Go to the previous occurrence of a character. Must type character after command.
+    <blockquote>
+      <p>I got this wrong. It’s <code class="language-plaintext highlighter-rouge">F</code> that goes to previous, <code class="language-plaintext highlighter-rouge">f</code> goes to next occurance with the cursor on the character. E.G. <code class="language-plaintext highlighter-rouge">fa</code> will go to the next occurance of <code class="language-plaintext highlighter-rouge">a</code> and place your cursor on <code class="language-plaintext highlighter-rouge">a</code>.</p>
+    </blockquote>
+  </li>
   <li><strong>g</strong>: Like a modifier. Characters typed after it has meaning. E.G. <code class="language-plaintext highlighter-rouge">gg</code> move to top. Mostly motion related commands.</li>
   <li><strong>h</strong>: Previous character.</li>
   <li><strong>j</strong>: Next line.</li>

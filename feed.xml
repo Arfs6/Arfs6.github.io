@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-12-22T08:08:30+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad - Programmer, Blogger</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">WSL Not Responding</title><link href="https://arfs6.me/blog/wsl/2023/12/22/wsl-not-responding.html" rel="alternate" type="text/html" title="WSL Not Responding" /><published>2023-12-22T07:26:00+00:00</published><updated>2023-12-22T07:26:00+00:00</updated><id>https://arfs6.me/blog/wsl/2023/12/22/wsl-not-responding</id><content type="html" xml:base="https://arfs6.me/blog/wsl/2023/12/22/wsl-not-responding.html"><![CDATA[<p>This is the second time I am having this problem. After turning on my laptop (desktop 😀), WSL will not respond to any command. It will hang indefinitely. This time, I am going to share how I “solved” it.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://arfs6.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://arfs6.me/" rel="alternate" type="text/html" /><updated>2023-12-27T20:29:54+00:00</updated><id>https://arfs6.me/feed.xml</id><title type="html">Abdulqadir Ahmad</title><subtitle>Abdulqadir Ahmad - Programmer, Blogger</subtitle><author><name>Abdulqadir Ahmad</name></author><entry><title type="html">WSL Not Responding</title><link href="https://arfs6.me/blog/wsl/2023/12/22/wsl-not-responding.html" rel="alternate" type="text/html" title="WSL Not Responding" /><published>2023-12-22T07:26:00+00:00</published><updated>2023-12-22T07:26:00+00:00</updated><id>https://arfs6.me/blog/wsl/2023/12/22/wsl-not-responding</id><content type="html" xml:base="https://arfs6.me/blog/wsl/2023/12/22/wsl-not-responding.html"><![CDATA[<p>This is the second time I am having this problem. After turning on my laptop (desktop 😀), WSL will not respond to any command. It will hang indefinitely. This time, I am going to share how I “solved” it.</p>
 
 <p>There is an <a href="https://github.com/microsoft/WSL/issues/8529">issue</a> on the WSL github repo on this problem, but it seems there is a difficulty reproducing the bug. A temporary solution <a href="https://github.com/microsoft/WSL/issues/8529#issuecomment-1166352159">suggested</a> by<a href="https://github.com/mmichal3">mmichal3</a> is to kill the WSL process from task manager.</p>
 
@@ -449,7 +449,11 @@ What is the URL (link) of the link? https://chat.openai.com
   <li><strong>a</strong>: Switch to insert mode with cursor after the currently focused character.</li>
   <li><strong>s</strong>: Delete the current character and switch to insert mode.</li>
   <li><strong>d</strong>: Delete. Must pass text object or motion to delete.</li>
-  <li><strong>f</strong>: Go to the previous occurrence of a character. Must type character after command.</li>
+  <li><strong>f</strong>: Go to the previous occurrence of a character. Must type character after command.
+    <blockquote>
+      <p>I got this wrong. It’s <code class="language-plaintext highlighter-rouge">F</code> that goes to previous, <code class="language-plaintext highlighter-rouge">f</code> goes to next occurance with the cursor on the character. E.G. <code class="language-plaintext highlighter-rouge">fa</code> will go to the next occurance of <code class="language-plaintext highlighter-rouge">a</code> and place your cursor on <code class="language-plaintext highlighter-rouge">a</code>.</p>
+    </blockquote>
+  </li>
   <li><strong>g</strong>: Like a modifier. Characters typed after it has meaning. E.G. <code class="language-plaintext highlighter-rouge">gg</code> move to top. Mostly motion related commands.</li>
   <li><strong>h</strong>: Previous character.</li>
   <li><strong>j</strong>: Next line.</li>
@@ -468,155 +472,7 @@ What is the URL (link) of the link? https://chat.openai.com
 
 <p>It took me months to reach this point. This twitter <a href="https://twitter.com/arf_s6/status/1632059902033051650?t=m_jcyAFRlWkS06MfzOGU9Q&amp;s=19">tweet</a> was like weeks after I started.</p>
 
-<p>I found new commands by mistake, I found other commands by reading. It just compiled over time and now, it is a muscle memory.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="vim" /><summary type="html"><![CDATA[I'll be writing this from memory, no help pages, no googling!]]></summary></entry><entry><title type="html">Getting started with python</title><link href="https://arfs6.me/blog/python/2023/11/14/getting-started-with-python.html" rel="alternate" type="text/html" title="Getting started with python" /><published>2023-11-14T13:14:00+00:00</published><updated>2023-11-14T13:14:00+00:00</updated><id>https://arfs6.me/blog/python/2023/11/14/getting-started-with-python</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/11/14/getting-started-with-python.html"><![CDATA[<p>My goal in this article is to get you to write some python code. I am a big believer in learning by doing, and this article is written with that in mind.</p>
-
-<h2 id="project">Project</h2>
-
-<p>The goal is to create a score resolver. It should request the user to enter his / her score and tell the user what grade he / she has.</p>
-
-<h2 id="requirements">Requirements</h2>
-
-<p>You can write your python code anywhere, but you need the python interpreter to be able to run the code. The python interpreter reads your code and instructs the computer on what to do.</p>
-
-<p>The app I’ll suggest is pydroid. It is available on Google playstore, I’m not sure of Apple app store.</p>
-
-<p>Pydroid has an interface for writing code, running code and even an interactive code execution with python.</p>
-
-<h2 id="python-repl">Python repl</h2>
-
-<p>When you click interpreter in pydroid, you’re getting the python repl. It has three greater than sign (<code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;</code>) then a cursor. The greater than sign is called a prompt. When you type in a command and hit enter, the interpreter executes your command and returns the result. Then it displays a new prompt, waiting for your next command.</p>
-
-<h2 id="steps">Steps</h2>
-
-<p>Computers are stupid by design. So, in order to instruct it, you need to tell it everything in details. You can’t just say “Go and get me a coffee”. You’ll have to tell it how to do it and when to do it. e.g.</p>
-
-<ul>
-  <li>Stand up immediately.</li>
-  <li>Walk straight 10 feets.</li>
-  <li>Get a cup from …</li>
-</ul>
-
-<p>You get my point? Now, our goal is to write a program that figures out what grade a score is. Let’s write down our instructions in english and then figure out how to replicate it in python.</p>
-
-<ol>
-  <li>Ask the user for his / her score.</li>
-  <li>Store what the user wrote.</li>
-  <li>Fine the grade corresponding to his / her score.</li>
-  <li>Display the corresponding grade.</li>
-</ol>
-
-<p>As you can see, almost all the steps are detailed, except step 3. We need to tell the stupid computer how to get a grade from a score.</p>
-
-<p>How about we use greater than and less than? E.G. When the score is less than 30, we know it is an F.</p>
-
-<p>Expanding step 3, we’ll have:</p>
-
-<p>Let the number the user entered be <code class="language-plaintext highlighter-rouge">score</code>.</p>
-
-<ul>
-  <li>If <code class="language-plaintext highlighter-rouge">score</code> is greater than or equal to 0 and it is less than 30, we display <em>F</em>.</li>
-  <li>If <code class="language-plaintext highlighter-rouge">score</code> is greater than or equal to 30 and it is less than 40, we display <em>E</em>.</li>
-  <li>If <code class="language-plaintext highlighter-rouge">score</code> is greater than or equal to 40 and it is less than 50, we display <em>D</em>.</li>
-  <li>If <code class="language-plaintext highlighter-rouge">score</code> is greater than or equal to 50 and it is less than 60, we display <em>C</em>.</li>
-  <li>If <code class="language-plaintext highlighter-rouge">score</code> is greater than or equal to 60 and it is less than 70, we display <em>B</em>.</li>
-  <li>If <code class="language-plaintext highlighter-rouge">score</code> is greater than or equal to 70 and it is less than or equal to 100, we display <em>A</em>.</li>
-</ul>
-
-<p>Let’s get started!</p>
-
-<h2 id="displaying-output">Displaying output</h2>
-
-<p>You might be wondering, according to the steps detailed above, we should be starting with accepting input. Yes, you’re right. I decided to start with the last item in our list because it has the less concepts.</p>
-
-<h3 id="hello-python-world">Hello Python World!</h3>
-
-<p>Open pydroid. At the top right, there is a button with three dashes. Click it and click interpreter. You will see something like this:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="o">|</span>
-</code></pre></div></div>
-
-<p>Where <code class="language-plaintext highlighter-rouge">|</code> represents your cursor.</p>
-
-<p>Now, type <code class="language-plaintext highlighter-rouge">print("Hello Python World!")</code>. Now, the interpreter will look like this:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Hello Python World!</span><span class="sh">"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>You have just typed an instruction that python will interpret and tell the computer what to do. Now, hit enter to execute it. You’ll have something like this now:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Hello Python World!</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">Hello</span> <span class="n">Python</span> <span class="n">World</span><span class="err">!</span>
-<span class="o">&gt;&gt;&gt;</span>
-</code></pre></div></div>
-
-<blockquote>
-  <p>If your output doesn’t look like mine, or if you get an error, compare your code with mine. Scrutinize it, character by character.</p>
-</blockquote>
-
-<h3 id="explanation">Explanation</h3>
-
-<p>We can break the above code into two:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">print()</code></li>
-  <li><code class="language-plaintext highlighter-rouge">"Hello Python World!"</code></li>
-</ul>
-
-<p>The first one is a callable object. Everything in python is an object (My laptop is an object), and each object has it’s own property (My laptop has a typing property. Which means, I can type using it). When you call a callable object, it does something for you and returns another thing. You can also give a value to a callable to work with.</p>
-
-<p>To call a callable, you write the name of the callable (<code class="language-plaintext highlighter-rouge">print</code>) followed by a pair of brackets (<code class="language-plaintext highlighter-rouge">(</code> and <code class="language-plaintext highlighter-rouge">)</code>). E.G. To call the <code class="language-plaintext highlighter-rouge">print</code> callable, you type <code class="language-plaintext highlighter-rouge">print()</code>. Let’s try it!</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">()</span>
-
-<span class="o">&gt;&gt;&gt;</span>
-</code></pre></div></div>
-
-<blockquote>
-  <p>There is no space between the callable and the pair of brackets.</p>
-</blockquote>
-
-<p>As you can see, we got an empty line. That is what the print function does when you don’t give anything to display.</p>
-
-<p>To give <code class="language-plaintext highlighter-rouge">print</code> what to display, you write it between the brackets. Let’s try it!</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="n">Hello</span><span class="p">)</span>
-<span class="nc">Traceback </span><span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="sh">"</span><span class="s">&lt;stdin&gt;</span><span class="sh">"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="sh">'</span><span class="s">Hello</span><span class="sh">'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
-<span class="o">&gt;&gt;&gt;</span> 
-</code></pre></div></div>
-
-<blockquote>
-  <p>The above text might differ slightly from yours, don’t worry as long as the last line is a <code class="language-plaintext highlighter-rouge">NameError</code>.</p>
-</blockquote>
-
-<p>We got an error!!! If you compare the first successful print command and this one, you’ll see that we didn’t use quotation marks in this one.</p>
-
-<p>The problem is, python doesn’t know what <code class="language-plaintext highlighter-rouge">Hello</code> means. It knows <code class="language-plaintext highlighter-rouge">print</code> is a callable object, but it doesn’t know what <code class="language-plaintext highlighter-rouge">Hello</code> is.</p>
-
-<p>We know, <code class="language-plaintext highlighter-rouge">Hello</code> is a text, how can we tell pyton? By quoting the text. If you quote the text, python will know it is a text. Let’s try it!</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Hello</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">Hello</span>
-<span class="o">&gt;&gt;&gt;</span> 
-</code></pre></div></div>
-
-<p>Now that you know how to print <code class="language-plaintext highlighter-rouge">Hello World!</code>, try printing:</p>
-
-<ul>
-  <li><strong>Abdulqadir Ahmad</strong>.</li>
-  <li>Your name.</li>
-</ul>
-
-<blockquote>
-  <p>If / when you get an error, read the concept again and make sure you’re using the right brackets and <code class="language-plaintext highlighter-rouge">print</code>. <code class="language-plaintext highlighter-rouge">print</code> is not the same with <code class="language-plaintext highlighter-rouge">Print</code>. Python is case sensitive.</p>
-</blockquote>
-
-<h2 id="storing-data">Storing data</h2>
-
-<blockquote>
-  <p>To be continued.</p>
-</blockquote>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><summary type="html"><![CDATA[My goal in this article is to get you to write some python code. I am a big believer in learning by doing]]></summary></entry><entry><title type="html">They robbed a blind man</title><link href="https://arfs6.me/blog/blind/2023/11/13/they-robbed-a-blind-man.html" rel="alternate" type="text/html" title="They robbed a blind man" /><published>2023-11-13T18:09:00+00:00</published><updated>2023-11-13T18:09:00+00:00</updated><id>https://arfs6.me/blog/blind/2023/11/13/they-robbed-a-blind-man</id><content type="html" xml:base="https://arfs6.me/blog/blind/2023/11/13/they-robbed-a-blind-man.html"><![CDATA[<p>One of my friend was recently robbed by some one close to him. This post isn’t meant to critisize him, but to learn from the incident. Let’s say his name is Brian.</p>
+<p>I found new commands by mistake, I found other commands by reading. It just compiled over time and now, it is a muscle memory.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="vim" /><summary type="html"><![CDATA[I'll be writing this from memory, no help pages, no googling!]]></summary></entry><entry><title type="html">They robbed a blind man</title><link href="https://arfs6.me/blog/blind/2023/11/13/they-robbed-a-blind-man.html" rel="alternate" type="text/html" title="They robbed a blind man" /><published>2023-11-13T18:09:00+00:00</published><updated>2023-11-13T18:09:00+00:00</updated><id>https://arfs6.me/blog/blind/2023/11/13/they-robbed-a-blind-man</id><content type="html" xml:base="https://arfs6.me/blog/blind/2023/11/13/they-robbed-a-blind-man.html"><![CDATA[<p>One of my friend was recently robbed by some one close to him. This post isn’t meant to critisize him, but to learn from the incident. Let’s say his name is Brian.</p>
 
 <h2 id="trust">Trust</h2>
 
@@ -722,4 +578,21 @@ What is the URL (link) of the link? https://chat.openai.com
 
 <h2 id="lesson">Lesson</h2>
 
-<p>Try as much as possible not to ask such questions, especially to someone you don’t know. Blind people exist, and who knows, maybe the person is blind. It doesn’t border me that much, but I’m sure it is going to border some of the people that asked me.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="blind" /><summary type="html"><![CDATA[I get asked this question often. The two times that stick out are]]></summary></entry></feed>
+<p>Try as much as possible not to ask such questions, especially to someone you don’t know. Blind people exist, and who knows, maybe the person is blind. It doesn’t border me that much, but I’m sure it is going to border some of the people that asked me.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="blind" /><summary type="html"><![CDATA[I get asked this question often. The two times that stick out are]]></summary></entry><entry><title type="html">Joining two absolute paths in python</title><link href="https://arfs6.me/blog/python/2023/10/21/python-os-path-join.html" rel="alternate" type="text/html" title="Joining two absolute paths in python" /><published>2023-10-21T18:55:00+00:00</published><updated>2023-10-21T18:55:00+00:00</updated><id>https://arfs6.me/blog/python/2023/10/21/python-os-path-join</id><content type="html" xml:base="https://arfs6.me/blog/python/2023/10/21/python-os-path-join.html"><![CDATA[<p>Let’s join two absolute paths using the <code class="language-plaintext highlighter-rouge">os</code> module of python:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="n">os</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="sh">'</span><span class="s">/home/arfs6</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">/proj</span><span class="sh">'</span><span class="p">)</span>  <span class="c1"># Expecting /home/arfs6/proj
+</span><span class="sh">'</span><span class="s">/proj</span><span class="sh">'</span>
+<span class="o">&gt;&gt;&gt;</span>
+</code></pre></div></div>
+
+<p>This was unexpected to me. I tried solving it by converting the second path to a relative path, and here is what i got:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">relpath</span><span class="p">(</span><span class="sh">'</span><span class="s">/proj</span><span class="sh">'</span><span class="p">)</span>
+<span class="sh">'</span><span class="s">../../../proj</span><span class="sh">'</span>
+<span class="o">&gt;&gt;&gt;</span> 
+</code></pre></div></div>
+
+<p>Looks like python is been too smart here. Just do what I asked you, nothing more, nothing less!</p>
+
+<p>At this point, I don’t know what to do. I don’t want to resolve to string manipulation for paths.</p>]]></content><author><name>Abdulqadir Ahmad</name></author><category term="python" /><category term="python," /><category term="os-module" /><summary type="html"><![CDATA[>>> os.path.join('/home/arfs6', '/proj') # Expecting /home/arfs6/proj]]></summary></entry></feed>
