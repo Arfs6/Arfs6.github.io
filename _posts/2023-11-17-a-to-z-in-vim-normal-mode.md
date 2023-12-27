@@ -23,6 +23,7 @@ I'll be writing this from memory, no help pages, no googling! I don't know all t
 12. **s**: Delete the current character and switch to insert mode.
 13. **d**: Delete. Must pass text object or motion to delete.
 14. **f**: Go to the previous occurrence of a character. Must type character after command.
+    > I got this wrong. It's `F` that goes to previous, `f` goes to next occurance with the cursor on the character. E.G. `fa` will go to the next occurance of `a` and place your cursor on `a`.
 15. **g**: Like a modifier. Characters typed after it has meaning. E.G. `gg` move to top. Mostly motion related commands.
 16. **h**: Previous character.
 17. **j**: Next line.
