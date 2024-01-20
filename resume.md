@@ -7,7 +7,7 @@ permalink: /resume.html
 - Software Engineer
 - **Email:** [arfs6.mail@gmail.com](mailto:arfs6.mail@gmail.com)
 - **Phone:** [+2349069040412](tel:+2349069040412)
-- **Nationality:** Nigeria
+- **Nationality:** Nigerian
 - **Website:** <https://arfs6.me>
 
 ## Experience
