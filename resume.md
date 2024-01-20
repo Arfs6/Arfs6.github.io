@@ -16,7 +16,7 @@ permalink: /resume.html
 
     TWBlue is an open source mastodon desktop client I [contribute](https://github.com/MCV-Software/TWBlue/pulls?q=is%3Apr+author%3AArfs6+) to. Technologies used in the project include python, WXPython (Graphical User Interface library) and gettext (translations library). Some of my contributions include:
 
-    - **[Automated building and release of new versions](https://github.com/MCV-Software/TWBlue/pull/567):** This paved the way to the first release of TWBlue in over half a year.
+    - **[Automated building and releasing new versions](https://github.com/MCV-Software/TWBlue/pull/567):** This paved the way to the first release of TWBlue in over half a year.
     - **[Fixed a button](https://github.com/MCV-Software/TWBlue/pull/524)**: This is my first contribution to an open source project.
 
 ## Projects
@@ -50,4 +50,4 @@ permalink: /resume.html
 ## Education
 
 1. 16/08/2023 *to* present - Computer Science - [University Of Jos](https://unijos.edu.ng) - Plateau State, Nigeria
-2. 14/08/2022 *to* present - Software Engineering - ALX Africa](https://alxafrica.com) - Kenya
+2. 14/08/2022 *to* present - Software Engineering - [ALX Africa](https://alxafrica.com) - Kenya
