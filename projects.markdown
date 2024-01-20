@@ -9,7 +9,7 @@ This page contains some projects I've worked on and the ones I am currently work
 
 Anotes is a note managing cli tool. Built with python, it aims to reduce the friction of managing notes on laptop. It is currently on alpha stage.
 
-## [Accessibility Hub](https://accessibilityhub.tech)
+## [Accessibility Hub](https://github.com/arfs6/AccessibilityHub)
 
 Accessibility hub aims to be a community for accessibility topics. Currently under development, it supports reviewing the accessibility of tools.
 
