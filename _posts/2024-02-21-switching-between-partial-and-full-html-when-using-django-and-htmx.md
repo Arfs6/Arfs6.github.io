@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Switching between partial and full html when using django and htmx
-categories: python, django
+categories: python django
 date: 2024/02/22 19:04:00 +0100
 ---
 I created a [context processor](https://docs.djangoproject.com/en/5.0/ref/templates/api/#context-processors) to help me switch between full and partial templates in [django](https://www.djangoproject.com) automatically. It sets my base template to a partial template if the request is a [`htmx`](https://htmx.org) request.
