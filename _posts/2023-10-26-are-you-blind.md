@@ -5,7 +5,7 @@ date: 2023/10/26 21:55:00 +0100
 category: blind
 excerpt: I get asked this question often. The two times that stick out are
 ---
-I get asked this question often, The two times that stick out are:  
+I often get asked this question, and two instances stand out:
 
 - This one was when i was in secondary school (or high school).  I and my friends were going somewhere on foot, and they stopped to buy something. As usuall, my white cane was with one of them. Seeing that I know the road and I am already on a pavement (walkway), I decided to continue walking without a guide. A couple of steps later, I bumped into  someone. His first reaction was:  
     > Are you blind?  
