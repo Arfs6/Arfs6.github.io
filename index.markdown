@@ -6,4 +6,4 @@ Welcome abord arfs6. I am a software engineer. I am responsible for the magic th
 
 ## [Projects](./projects)  
 
-I have lots of thing I want to build. Visit my [project](./projects) page to see some of the things I have worked on.
+I have lots of stuffs I want to build. Visit my [project](./projects) page to see some of the things I have worked on.
