@@ -1,7 +1,7 @@
 ---
 layout: post
 title: First Day On Linux Mint
-date: 2024/03/09 08:58:00 +0100
+date: 2024/03/10 08:58:00 +0100
 category: linux accessibility
 ---
 I spent the whole of yesterday playing around with [Linux Mint](https://linuxmint.com). With the help of a friend, I dual booted my laptop the day before yesterday (Friday). So far, everything works. I am trying to get used to using [orca](https://en.wikipedia.org/wiki/Orca_(assistive_technology)) (Linux's screen reader).
