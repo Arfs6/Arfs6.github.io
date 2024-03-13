@@ -1,10 +1,10 @@
 ---
 layout: post
-title: My Editor Always Grows With Me
+title: My Edittor Always Grows With Me
 date: 2024/03/13 07:57 +0100
 category: neovim
 ---
-My editor has always been growing with me since when I started programming.
+My edittor has always been growing with me since when I started programming.
 
 It started up as something that just works, nothing more. I was learning it piece by piece, day by day.
 
