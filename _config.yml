@@ -34,6 +34,12 @@ author: Abdulqadir Ahmad
 permalink: /blog/:categories/:year/:month/:day/:title:output_ext
 show_excerpts: true
 
+header_pages:
+  - blog.markdown
+  - projects.markdown
+  - about.markdown
+  - resume.md
+
   # # collections settings
 # collections:
 #   _post:
