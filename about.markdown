@@ -5,7 +5,7 @@ permalink: /about/
 ---
 Hi, My name is Abdulqadir Ahmad (You can call me Abdul or Abuahmad). Depending on how / where you meet me, the first thing you might notice about me is either  I'm blind, I am a software engineer, I talk too much, I have (strange) opinions, I am a muslim or I laugh / smile a lot.
 
-## I am bline
+## I Am Blind
 
 I became blind early 2020 and I am still trying to figure out how to do somethings. Blindness has brought a lot of good change to my life. I tend to appreciate things like time, good texture and nice sounds. It made me realise somethings I don't know I will had without becomming blind. I now know there is a world of blind people out there doing all sought of stuffs, from archery to flying planes and programming. ICYMI; there are a lot of blind software engineers. Lastly, blindness has brought some not so good things too my life. The aspect of walking alone without seeing is something I haven't really understood yet.
 
