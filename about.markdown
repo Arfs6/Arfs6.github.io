@@ -3,7 +3,6 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-# About me  
 Hi, My name is Abdulqadir Ahmad (You can call me Abdul or Abuahmad). Depending on how / where you meet me, the first thing you might notice about me is either  I'm blind, I am a software engineer, I talk too much, I have (strange) opinions, I am a muslim or I laugh / smile a lot.
 
 ## I am bline
