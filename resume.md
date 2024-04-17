@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Resume
-permalink: /resume.html
+permalink: /resume
 ---
 # Abdulqadir Ahmad
 - Software Engineer
