@@ -8,7 +8,7 @@ permalink: /resume
 - **Email:** [arfs6.mail@gmail.com](mailto:arfs6.mail@gmail.com)
 - **Phone:** [+2349069040412](tel:+2349069040412)
 - **Nationality:** Nigerian
-- **Website:** <https://arfs6.me>
+- **Website:** <https://arfs6.github.io>
 
 ## Experience
 
