@@ -10,11 +10,15 @@ permalink: /resume
 - **Nationality:** Nigerian
 - **Website:** <https://arfs6.github.io>
 
+A software engineer with experience in web backend and desktop app development. He has appreciation for simple solutions and hyper aware of accessibility.
+
 ## Experience
+
+### Open Source
 
 1. [**TWBlue**](https://github.com/mcv-software/twblue)
 
-    TWBlue is an open source mastodon desktop client I [contribute](https://github.com/MCV-Software/TWBlue/pulls?q=is%3Apr+author%3AArfs6+) to. Technologies used in the project include python, WXPython (Graphical User Interface library) and gettext (translations library). Some of my contributions include:
+    TWBlue is an open source mastodon desktop client I [contribute](https://github.com/MCV-Software/TWBlue/pulls?q=is%3Apr+author%3AArfs6+) to. Technologies used in the project include python, WXPython (Graphical User Interface library), pubsub events and gettext (translations library). Some of my contributions include:
 
     - **[Automated building and releasing new versions](https://github.com/MCV-Software/TWBlue/pull/567):** This paved the way to the first release of TWBlue in over half a year.
     - **[Fixed a button](https://github.com/MCV-Software/TWBlue/pull/524)**: This is my first contribution to an open source project.
@@ -23,11 +27,20 @@ permalink: /resume
 
 1. [**Accessibility Hub**](https://github.com/arfs6/AccessibilityHub)
 
-    I developed a website that aims to be a community focused on accessibility. It has a feature that lets users review the accessibility of a tool by rating and commenting on the tool's page. Technologies used include python, django, htmx, and nginx.
+    I developed a website that aims to be a community focused on accessibility. The two main features of the websites are:
 
-2. [A Notes](https://github.com/arfs6/anotes)
+    - **Reviews**: This allows users to review the accessibility of a tool by rating and commenting about it.
+    - **Discussions**: This enables users to create topics and contribute to opened topics about accessibility.
 
-    A Notes is a command line tool that manages notes in a file-agnostic manner. I built it with python and I use it for writing my notes in school.
+    . Technologies used include python, django, MySQL, Fabric, htmx, and nginx.
+
+2. [**A Notes**](https://github.com/arfs6/anotes)
+
+    A Notes is a command line tool that manages notes in a file-agnostic manner. I built it with python and I used to use it for writing notes in school. The main features of A Notes are:
+
+    - Ability to create and edit topics and notes.
+    - An auto compiler that compiles notes to desired output.
+    - A local server that serves local html files to be viewed in the browser.
 
 ## Skills
 
@@ -37,17 +50,26 @@ permalink: /resume
 2. Django
 3. WXPython
 4. Github
-4. Git
-5. Linux
-6. SQL
+5. Git
+6. Linux
+7. SQL
+8. Database
+9. Haproxy
+10. Nginx
+11. C
 
 ### Non Technical
 
 1. Communication
 2. Collaboration
 3. English
+4. Problem Solving
+5. Helping others
 
 ## Education
 
 1. 16/08/2023 *to* present - Computer Science - [University Of Jos](https://unijos.edu.ng) - Plateau State, Nigeria
-2. 14/08/2022 *to* present - Software Engineering - [ALX Africa](https://alxafrica.com) - Kenya
+2. 14/08/2022 *to* 08/03/2024 - Software Engineering - [ALX Africa](https://alxafrica.com) - Kenya
+    - [
+    - ![Certificate](/assets/images/alx-se-certificate.png)
+    - [Transcript](/assets/documents/alx-se-transcript.pdf)
