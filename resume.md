@@ -4,7 +4,9 @@ title: Resume
 permalink: /resume
 ---
 # Abdulqadir Ahmad
-- Software Engineer
+
+## Software Engineer
+
 - **Email:** [arfs6.mail@gmail.com](mailto:arfs6.mail@gmail.com)
 - **Phone:** [+2349069040412](tel:+2349069040412)
 - **Nationality:** Nigerian
@@ -18,10 +20,12 @@ A software engineer with experience in web backend and desktop app development. 
 
 1. [**TWBlue**](https://github.com/mcv-software/twblue)
 
-    TWBlue is an open source mastodon desktop client I [contribute](https://github.com/MCV-Software/TWBlue/pulls?q=is%3Apr+author%3AArfs6+) to. Technologies used in the project include python, WXPython (Graphical User Interface library), pubsub events and gettext (translations library). Some of my contributions include:
+    - [Contributor](https://github.com/MCV-Software/TWBlue/pulls?q=is%3Apr+author%3AArfs6+) to TWBlue, an open source [mastodon](https://mastodon.social) desktop client.
+    - Technologies include; python, WXPython (Graphical User Interface library), pubsub events and gettext (translations library).
+    - Key contributions:
 
-    - **[Automated building and releasing new versions](https://github.com/MCV-Software/TWBlue/pull/567):** This paved the way to the first release of TWBlue in over half a year.
-    - **[Fixed a button](https://github.com/MCV-Software/TWBlue/pull/524)**: This is my first contribution to an open source project.
+        - **[Automated building and releasing new versions](https://github.com/MCV-Software/TWBlue/pull/567):** This paved the way to the first release of TWBlue in over half a year.
+        - **[Fixed a button](https://github.com/MCV-Software/TWBlue/pull/524)**: First contribution to an open source project.
 
 ## Projects
 
@@ -70,6 +74,5 @@ A software engineer with experience in web backend and desktop app development. 
 
 1. 16/08/2023 *to* present - Computer Science - [University Of Jos](https://unijos.edu.ng) - Plateau State, Nigeria
 2. 14/08/2022 *to* 08/03/2024 - Software Engineering - [ALX Africa](https://alxafrica.com) - Kenya
-    - [
-    - ![Certificate](/assets/images/alx-se-certificate.png)
-    - [Transcript](/assets/documents/alx-se-transcript.pdf)
+    - ![Certificate](https://arfs6.github.io/assets/images/alx-se-specialization-certificate.png)
+    - [Transcript](https://arfs6.github.io/assets/documents/alx-se-transcript.pdf)
