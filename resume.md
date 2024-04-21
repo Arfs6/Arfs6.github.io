@@ -12,13 +12,13 @@ permalink: /resume
 - **Nationality:** Nigerian
 - **Website:** <https://arfs6.github.io>
 
-A software engineer with experience in web backend and desktop app development. He has appreciation for simple solutions and hyper aware of accessibility.
+I am a software engineer with experience in web backend and desktop app development. I have appreciation for simple solutions and hyper aware of accessibility.
 
 ## Experience
 
 ### Open Source
 
-1. [**TWBlue**](https://github.com/mcv-software/twblue)
+1. _25/2/2023_ *to* _present_ - [**TWBlue**](https://github.com/mcv-software/twblue)
 
     - [Contributor](https://github.com/MCV-Software/TWBlue/pulls?q=is%3Apr+author%3AArfs6+) to TWBlue, an open source [mastodon](https://mastodon.social) desktop client.
     - Technologies include; python, WXPython (Graphical User Interface library), pubsub events and gettext (translations library).
@@ -61,6 +61,7 @@ A software engineer with experience in web backend and desktop app development. 
 9. Haproxy
 10. Nginx
 11. C
+12. HTML / CSS / Javascript
 
 ### Non Technical
 
@@ -74,5 +75,5 @@ A software engineer with experience in web backend and desktop app development. 
 
 1. 16/08/2023 *to* present - Computer Science - [University Of Jos](https://unijos.edu.ng) - Plateau State, Nigeria
 2. 14/08/2022 *to* 08/03/2024 - Software Engineering - [ALX Africa](https://alxafrica.com) - Kenya
-    - ![Certificate](https://arfs6.github.io/assets/images/alx-se-specialization-certificate.png)
+    - [Certificate](https://arfs6.github.io/assets/images/alx-se-specialization-certificate.png)
     - [Transcript](https://arfs6.github.io/assets/documents/alx-se-transcript.pdf)
