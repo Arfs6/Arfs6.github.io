@@ -2,7 +2,7 @@
 layout: post
 title: Hibernating windows
 category: windows
-date: 2024/05/11 11:36:00 +01100
+date: 2024/05/11 11:36:00 +0100
 ---
 I can remember seeing hibernate as an option when shutting down a laptop when I was much younger. I wondered where the option is now, and I accidentally met it last night.
 
