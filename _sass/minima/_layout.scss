@@ -8,6 +8,7 @@
 
   // Positioning context for the mobile navigation icon
   position: relative;
+  background-color: $primary-color;
 }
 
 .site-title {
@@ -20,7 +21,7 @@
 
   &,
   &:visited {
-    color: $silver-color;
+    color: darken($primary-color, 35%);
   }
 }
 
@@ -50,7 +51,7 @@
     position: absolute;
     top: 9px;
     right: $spacing-unit / 2;
-    background-color: $background-color;
+    background-color: $primary-color;
     border: 1px solid $grey-color-light;
     border-radius: 5px;
     text-align: right;
@@ -181,7 +182,7 @@
 	flex: 1;
 	.wrapper {
 		width: 80%;
-		background-color: $alternate-background-color;
+		background-color: $background-color;
 		box-shadow: 1.1rem 1.1rem 1.1rem $background-color;
 	}
 }
@@ -226,6 +227,7 @@
   @include relative-font-size(2.625);
   letter-spacing: -1px;
   line-height: 1;
+  background-color: $primary-color;
 
   @include media-query($on-laptop) {
     @include relative-font-size(2.25);

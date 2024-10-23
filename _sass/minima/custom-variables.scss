@@ -1,6 +1,7 @@
 $base-font-family: Poppins, "Segoe UI", Arial;
 $content-font-family: Alegreya, Georgia, "Times New Roman";
 $dark-blue-color: #001f3f;
+$blue-color: #1E90FF;
 $base-font-size: 18px;
 $dark-red-color: #8B0000;
 $light-brown-color: #D2B48C;
@@ -11,6 +12,8 @@ $dark-teal-color: #008b8b;
 $turquoise-color: #40E0D0;
 $teal-color: #008080;
 $silver-color: silver;
-$background-color: darken($turquoise-color, 40%);
+$brown-color: #D2B48C;
+$primary-color: $brown-color;
+$background-color: #F5F5F5;
 $alternate-background-color: darken($turquoise-color, 53%);
-$text-color: lighten($turquoise-color, 20%);
+$text-color: #333333;
