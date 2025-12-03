@@ -1,11 +1,8 @@
---
+---
 layout: post
 title: Day One (1) - Advent of Python 2025
 date: 2025/12/02 06:51:00 +0100
-categories:
-  - Advent-of-Code
-  - Python
-  - Programming
+categories: ["Advent-of-Code", "Python", "Programming"]
 ---
 
 I've decided to solve advent of code 2025 puzzles in python, and I'll share my thoughts as a series of blogs.
