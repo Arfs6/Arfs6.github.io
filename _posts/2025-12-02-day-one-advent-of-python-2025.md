@@ -1,6 +1,6 @@
----
+--
 layout: post
-title: Day One (1) Advent of Python 2025
+title: Day One (1) - Advent of Python 2025
 date: 2025/12/02 06:51:00 +0100
 categories:
   - Advent-of-Code
@@ -10,7 +10,7 @@ categories:
 
 I've decided to solve advent of code 2025 puzzles in python, and I'll share my thoughts as a series of blogs.
 
-## Puzzle
+##Puzzle
 
 The Elves have adopted project management, but now they’re too busy to decorate the North Pole—so you've been recruited. To get inside the base and start helping, you must open a safe whose combination is given as a list of dial rotations. The dial shows numbers 0–99, starts at 50, and each instruction moves it left (L) or right (R) by a given number of clicks, wrapping around the circle as needed.
 
@@ -123,5 +123,122 @@ def run():
 
 
 if __name__ == "__main__":
+    run()
+```
+
+## Part 2
+
+The second part introduces a new password rule due to "newer security protocols." Instead of counting how many times the dial ends on 0 after a rotation, the new password is the total number of times the dial clicks onto 0 during any part of the rotation sequence, including intermediate steps.
+
+## My Thoughts
+
+At this point, I'm still thinking about how if I was using a linked list, I'll just change the code that iterates through it into a generator and yield 0 every time I reach zero (0).
+
+After thinking about it for a bit, I decided to bring back my list of dial numbers `Dial.numbers`, and for each rotation, I'll return a slice of the list from the starting position to where the pointer stopped. Same as last time, I realized the list was redundant, I can just use `list(range(start, stop, step))` instead.
+
+So, for each rotation (left and right), I now return a list that contains all the numbers the dial pointed at, including the starting position and the current position.
+
+Further more, I added a line that added the quotient of `99 / direction` to the password when `direction` is greater than 100, i.e. when dial rotates 360 degrees. While I was working on this line, I realized I could change my logic for evaluating the new pointer position to use the modulo operator. If day 2 puzzle uses the dial class, I'll change the logic (probably).
+
+The only issue I had this time was with detecting when the dial touched 0. My first implementation checks if 0 is in the list of the list returned after each rotation. The list starts from the previous pointer, so when the previous pointer was pointing at 0, the list will have 0, and that 0 wasn't part of the rotation. So I fixed it by checking for 0 in the list starting from the second number.
+
+## Solution
+
+```python
+#! /usr/bin/env python3
+"""
+Link to puzzle:
+https://adventofcode.com/2025/day/1
+"""
+
+from pathlib import Path
+
+
+class Dial:
+    """This class represents the dial of the safe.
+    It can move both left `cls.l` and right `cls.r`.
+    It also keeps track of the current position.
+    """
+
+    starting_point = 50
+    first_number = 0
+    last_number = 99
+
+    def __init__(self):
+        """initialization for class."""
+        self._pointer = self.starting_point
+
+    def left(self, number: int) -> list[int]:
+        """Move left `number` times.
+        Parameters:
+        - `number`: Number of rotations.
+        returns: What the pointer is pointing at after rotation.
+        """
+        assert number >= self.first_number and number <= self.last_number
+        initial_pointer = self._pointer
+        if self._pointer >= number:
+            self._pointer = self._pointer - number
+        else:
+            self._pointer = self.last_number - ((number - self._pointer) - 1)
+        assert self._pointer >= self.first_number and self._pointer <= self.last_number
+        if initial_pointer < self._pointer:
+            # We have move accross from 0 to 99.
+            return list(range(initial_pointer, self.first_number - 1, -1)) + list(
+                range(self.last_number, self._pointer - 1, -1)
+            )
+        else:
+            return list(range(initial_pointer, self._pointer - 1, -1))
+
+    def right(self, number: int) -> list[int]:
+        """Move right `number` times.
+        Parameters:
+        - number: Number of times to move right.
+        Returns: Current number the pointer is pointing at.
+        """
+        assert number >= self.first_number and number <= self.last_number
+        initial_pointer = self._pointer
+        if self._pointer + number <= self.last_number:
+            self._pointer = self._pointer + number
+        else:
+            self._pointer = (number - (self.last_number - self._pointer)) - 1
+        assert self._pointer >= self.first_number and self._pointer <= self.last_number
+        if initial_pointer > self._pointer:
+            # We've moved across: from 99 to 0
+            return list(range(initial_pointer, self.last_number + 1)) + list(
+                range(self.first_number, self._pointer + 1)
+            )
+        else:
+            return list(range(initial_pointer, self._pointer + 1))
+
+
+def run():
+    """Entry for code."""
+    script_path = Path(__file__).resolve()
+    script_dir = script_path.parent
+    input_file_path = script_dir / 'day_1_input.txt'
+    with open(input_file_path) as file_obj:
+        combinations = file_obj.readlines()
+
+    dial = Dial()
+    password = 0
+    for line in combinations:
+        number = int(line[1:])
+        if number > Dial.last_number:
+            quotient, number = divmod(number, Dial.last_number + 1)
+            password += quotient
+        direction = line[:1]
+        if direction == 'L':
+            pointers = dial.left(number)
+        elif direction == 'R':
+            pointers = dial.right(number)
+        else:
+            raise Exception(f'Direction {direction} does not exist.')
+        if 0 in pointers[1:]:
+            password += 1
+
+    print(password)
+
+
+if __name__ == '__main__':
     run()
 ```
