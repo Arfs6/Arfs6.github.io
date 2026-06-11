@@ -56,3 +56,7 @@ permalink: /resume
 4. [**Comodoro**](https://github.com/arfs6/comodoro)
     - Built a pomodoro cross platform app with Graphical User Interface and Command Line Interface, and packaged into executables with cx freeze.
     - **Technologies:** Python, WxPython, zmq, PubSub, Cx Freeze
+
+## Awards
+
+- MTN scholarship [2025]
